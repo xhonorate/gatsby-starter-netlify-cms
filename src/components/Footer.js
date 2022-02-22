@@ -1,113 +1,96 @@
 import * as React from "react";
 import { Link } from "gatsby";
 
-import logo from "../img/logo.svg";
-import facebook from "../img/social/facebook.svg";
-import instagram from "../img/social/instagram.svg";
-import twitter from "../img/social/twitter.svg";
-import vimeo from "../img/social/vimeo.svg";
+import logo from "../../static/img/logo.svg";
 
 const Footer = class extends React.Component {
   render() {
     return (
-      <footer className="footer has-background-black has-text-white-ter">
-        <div className="content has-text-centered">
-          <img
-            src={logo}
-            alt="Kaldi"
-            style={{ width: "14em", height: "10em" }}
-          />
-        </div>
-        <div className="content has-text-centered has-background-black has-text-white-ter">
-          <div className="container has-background-black has-text-white-ter">
-            <div style={{ maxWidth: "100vw" }} className="columns">
-              <div className="column is-4">
-                <section className="menu">
-                  <ul className="menu-list">
-                    <li>
-                      <Link to="/" className="navbar-item">
-                        Home
-                      </Link>
-                    </li>
-                    <li>
-                      <Link className="navbar-item" to="/about">
-                        About
-                      </Link>
-                    </li>
-                    <li>
-                      <Link className="navbar-item" to="/products">
-                        Products
-                      </Link>
-                    </li>
-                    <li>
-                      <Link className="navbar-item" to="/contact/examples">
-                        Form Examples
-                      </Link>
-                    </li>
-                    <li>
-                      <a
-                        className="navbar-item"
-                        href="/admin/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        Admin
-                      </a>
-                    </li>
-                  </ul>
-                </section>
-              </div>
-              <div className="column is-4">
-                <section>
-                  <ul className="menu-list">
-                    <li>
-                      <Link className="navbar-item" to="/blog">
-                        Latest Stories
-                      </Link>
-                    </li>
-                    <li>
-                      <Link className="navbar-item" to="/contact">
-                        Contact
-                      </Link>
-                    </li>
-                  </ul>
-                </section>
-              </div>
-              <div className="column is-4 social">
-                <a title="facebook" href="https://facebook.com">
-                  <img
-                    src={facebook}
-                    alt="Facebook"
-                    style={{ width: "1em", height: "1em" }}
-                  />
-                </a>
-                <a title="twitter" href="https://twitter.com">
-                  <img
-                    className="fas fa-lg"
-                    src={twitter}
-                    alt="Twitter"
-                    style={{ width: "1em", height: "1em" }}
-                  />
-                </a>
-                <a title="instagram" href="https://instagram.com">
-                  <img
-                    src={instagram}
-                    alt="Instagram"
-                    style={{ width: "1em", height: "1em" }}
-                  />
-                </a>
-                <a title="vimeo" href="https://vimeo.com">
-                  <img
-                    src={vimeo}
-                    alt="Vimeo"
-                    style={{ width: "1em", height: "1em" }}
-                  />
-                </a>
-              </div>
+      <footer class="footer footer-dark">
+    <div class="container">
+        <div class="columns">
+            <div class="column">
+                <div class="footer-logo">
+                    <img src="/img/logo/fresh-white-alt.svg"/>
+                </div>
             </div>
-          </div>
+            <div class="column">
+                <div class="footer-column">
+                    <div class="footer-header">
+                        <h3>Product</h3>
+                    </div>
+                    <ul class="link-list">
+                        <li><a href="#">Discover features</a></li>
+                        <li><a href="#">Why choose our Product ?</a></li>
+                        <li><a href="#">Compare features</a></li>
+                        <li><a href="#">Our Roadmap</a></li>
+                        <li><a href="#">Request features</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="column">
+                <div class="footer-column">
+                    <div class="footer-header">
+                        <h3>Docs</h3>
+                    </div>
+                    <ul class="link-list">
+                        <li><a href="#">Get Started</a></li>
+                        <li><a href="#">User guides</a></li>
+                        <li><a href="#">Admin guide</a></li>
+                        <li><a href="#">Developers</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="column">
+                <div class="footer-column">
+                    <div class="footer-header">
+                        <h3>Blogroll</h3>
+                    </div>
+                    <ul class="link-list">
+                        <li><a href="#">Latest News</a></li>
+                        <li><a href="#">Tech articles</a></li>
+                        <li><a href="#">Video Blog</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="column">
+                <div class="footer-column">
+                    <div class="footer-header">
+                        <h3>Follow Us</h3>
+                        <nav class="level is-mobile">
+                            <div class="level-left">
+                                <a class="level-item" href="https://github.com/#">
+                                    <span class="icon">
+                                        <ion-icon name="logo-github" size="large"></ion-icon>
+                                    </span>
+                                </a>
+                                <a class="level-item" href="https://facebook.com/#">
+                                    <span class="icon">
+                                        <ion-icon name="logo-facebook" size="large"></ion-icon>
+                                    </span>
+                                </a>
+                                <a class="level-item" href="https://google.com/#">
+                                    <span class="icon">
+                                        <ion-icon name="logo-google" size="large"></ion-icon>
+                                    </span>
+                                </a>
+                                <a class="level-item" href="https://linkedin.com/#">
+                                    <span class="icon">
+                                        <ion-icon name="logo-linkedin" size="large"></ion-icon>
+                                    </span>
+                                </a>
+                            </div>
+                        </nav>
+
+                        <a href="https://bulma.io" target="_blank">
+                            <img src="/img/logo/made-with-bulma.png" alt="Made with Bulma" width="128" height="24"/>
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
-      </footer>
+    </div>
+</footer>
     );
   }
 };

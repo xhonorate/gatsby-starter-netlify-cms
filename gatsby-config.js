@@ -34,6 +34,7 @@ module.exports = {
       },
     },
     `gatsby-plugin-image`,
+    "gatsby-plugin-web-font-loader",
     "gatsby-plugin-sharp",
     "gatsby-transformer-sharp",
     {
