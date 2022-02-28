@@ -1,0 +1,24 @@
+
+// Theme colors
+$primary: var(--theme-color-primary);
+$secondary: var(--theme-color-secondary);
+$success: var(--theme-color-success);
+$info: var(--theme-color-info);
+$warning: var(--theme-color-warning);
+$danger: var(--theme-color-danger);
+$light: $gray-50 !default;
+$dark: $gray-900 !default;
+
+//Typeface
+$font-family-base: 'Open Sans';
+$headings-font-family: 'Raleway';
+
+$link-color: $primary;
+$link-hover-color: #7b94c9;
+
+$nav-link-color: $link-color;
+$nav-link-hover-color: $link-hover-color;
+$nav-link-font-size: $font-size-base;
+
+$navbar-padding-y: $spacer * 1.0;
+$navbar-padding-top: $navbar-padding-y;

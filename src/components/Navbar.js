@@ -1,86 +1,156 @@
 import React from "react";
-import { Link } from "gatsby";
-import logo from "../../static/img/logo.svg";
+import {
+  MDBContainer,
+  MDBNavbar,
+  MDBNavbarToggler,
+  MDBIcon,
+  MDBNavbarNav,
+  MDBNavbarItem,
+  MDBDropdown,
+  MDBDropdownToggle,
+  MDBDropdownDivider,
+  MDBDropdownMenu,
+  MDBDropdownItem,
+  MDBCollapse
+} from 'mdb-react-ui-kit';
+import { GMDBDropdownLink, GMDBNavbarBrand, GMDBNavbarLink } from "./GatsbyMDB";
+import { StaticImage } from "gatsby-plugin-image"
+
+const OffsetDropDown = ({children}) => {
+  return (
+    <MDBDropdown options={{
+      modifiers:[
+      {
+        name: 'offset',
+        options: {
+          offset: [-6, 8],
+        },
+      }]}}>
+      {children}
+      </MDBDropdown>
+  );
+}
 
 const Navbar = class extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      active: false,
-      navBarActiveClass: "",
+      showBasic: false,
     };
-  }
-
-  toggleHamburger() {
-    // toggle the active boolean in the state
-    this.setState(
-      {
-        active: !this.state.active,
-      },
-      // after state has been updated,
-      () => {
-        // set the class in state for the navbar accordingly
-        this.state.active
-          ? this.setState({
-              navBarActiveClass: "is-active",
-            })
-          : this.setState({
-              navBarActiveClass: "",
-            });
-      }
-    );
   }
 
   render() {
     return (
-      <nav
-        className="navbar is-fresh is-transparent no-shadow"
-        role="navigation"
-        aria-label="main-navigation"
-      >
-        <div className="container">
-          <div className="navbar-brand">
-            <Link to="/" className="navbar-item" title="Logo">
-              <img src={logo} alt="Logo" style={{ width: "88px" }} />
-            </Link>
-            {/* Hamburger menu */}
-            <div
-              className={`navbar-burger burger ${this.state.navBarActiveClass}`}
-              data-target="navMenu"
-              role="menuitem"
-              tabIndex={0}
-              onKeyPress={() => this.toggleHamburger()}
-              onClick={() => this.toggleHamburger()}
-            >
-              <span />
-              <span />
-              <span />
-            </div>
-          </div>
-          <div
-            id="navMenu"
-            className={`navbar-menu ${this.state.navBarActiveClass}`}
-          >
-            <div className="navbar-end">
-              <Link className="navbar-item" to="/about">
-                About
-              </Link>
-              <Link className="navbar-item" to="/products">
-                Products
-              </Link>
-              <Link className="navbar-item" to="/blog">
-                Blog
-              </Link>
-              <Link className="navbar-item" to="/contact">
-                Contact
-              </Link>
-              <Link className="navbar-item" to="/contact/examples">
-                Form Examples
-              </Link>
-            </div>
-          </div>
-        </div>
-      </nav>
+      <MDBNavbar expand='lg' light color="blue" bgColor='light'>
+      <MDBContainer /*fluid*/>
+        <GMDBNavbarBrand to='/'>
+            <StaticImage
+              src="../img/Whitestar/Logo_Simple.png"
+              alt='logo'
+              placeholder="tracedSVG"
+              layout="fixed"
+              loading="eager"
+              width={36}
+              height={36}
+            />
+            <span className="navbar-brand-text">
+            WhiteStar
+            </span>
+        </GMDBNavbarBrand>
+
+        <MDBNavbarToggler
+          aria-controls='navbarSupportedContent'
+          aria-expanded='false'
+          aria-label='Toggle navigation'
+          onClick={() => this.setState({showBasic: !this.state.showBasic})}
+        >
+          <MDBIcon icon='bars' fas />
+        </MDBNavbarToggler>
+
+        <MDBCollapse navbar show={this.state.showBasic}>
+          <MDBNavbarNav className='justify-content-between ps-2 mb-2 mb-lg-0'>
+            <MDBNavbarItem>
+              <GMDBNavbarLink href='/home' active aria-current='page'>
+                Home
+              </GMDBNavbarLink>
+            </MDBNavbarItem>
+
+            <MDBNavbarItem>
+              <OffsetDropDown>
+                <MDBDropdownToggle tag='a' className='nav-link'>
+                  Products
+                </MDBDropdownToggle>
+                <MDBDropdownMenu>
+                  <MDBDropdownItem>
+                    <GMDBDropdownLink className="nav-link">Society Mobile App</GMDBDropdownLink>
+                  </MDBDropdownItem>
+                  <MDBDropdownItem>
+                    <GMDBDropdownLink className="nav-link">WhiteStar Technologies</GMDBDropdownLink>
+                  </MDBDropdownItem>
+                </MDBDropdownMenu>
+              </OffsetDropDown>
+            </MDBNavbarItem>
+
+            <MDBNavbarItem>
+              <OffsetDropDown>
+                <MDBDropdownToggle tag='a' className='nav-link'>
+                  White Papers
+                </MDBDropdownToggle>
+                <MDBDropdownMenu>
+                  <MDBDropdownItem>
+                    <MDBDropdown dropright>
+                      <MDBDropdownToggle tag='a' className='nav-link' onClick={(e) => e.stopPropagation()}>
+                        Dropdown
+                      </MDBDropdownToggle>
+                      <MDBDropdownMenu>
+                        <MDBDropdownItem>
+                          <GMDBDropdownLink className="nav-link" href="/">Action</GMDBDropdownLink>
+                        </MDBDropdownItem>
+                        <MDBDropdownItem>
+                          <GMDBDropdownLink className="nav-link">Another action</GMDBDropdownLink>
+                        </MDBDropdownItem>
+                        <MDBDropdownItem>
+                          <GMDBDropdownLink className="nav-link">Something else here</GMDBDropdownLink>
+                        </MDBDropdownItem>
+                      </MDBDropdownMenu>
+                    </MDBDropdown>
+                  </MDBDropdownItem>
+                  <MDBDropdownItem>
+                    <GMDBDropdownLink className="nav-link">Another action</GMDBDropdownLink>
+                  </MDBDropdownItem>
+                  <MDBDropdownDivider></MDBDropdownDivider>
+                  <MDBDropdownItem>
+                    <GMDBDropdownLink className="nav-link">Something else here</GMDBDropdownLink>
+                  </MDBDropdownItem>
+                </MDBDropdownMenu>
+              </OffsetDropDown>
+            </MDBNavbarItem>
+
+            <MDBNavbarItem>
+              <OffsetDropDown>
+                <MDBDropdownToggle tag='a' className='nav-link'>
+                  About WhiteStar
+                </MDBDropdownToggle>
+                <MDBDropdownMenu>
+                  <MDBDropdownItem>
+                    <GMDBDropdownLink className="nav-link">Announcements</GMDBDropdownLink>
+                  </MDBDropdownItem>
+                </MDBDropdownMenu>
+              </OffsetDropDown>
+            </MDBNavbarItem>
+
+            <MDBNavbarItem>
+              <GMDBNavbarLink href='#'>Careers</GMDBNavbarLink>
+            </MDBNavbarItem>
+
+            <MDBNavbarItem>
+              <GMDBNavbarLink href='#'>Contact Us</GMDBNavbarLink>
+            </MDBNavbarItem>
+
+          </MDBNavbarNav>          
+        </MDBCollapse>
+      </MDBContainer>
+    </MDBNavbar>
     );
   }
 };

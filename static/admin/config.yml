@@ -13,6 +13,22 @@ media_folder: static/img
 public_folder: /img
 
 collections:
+  - name: "config"
+    label: "Config"
+    editor:
+      preview: false
+    files:
+    - file: "src/style/config/theme-colors.md"
+      label: "Theme Colors"
+      name: "theme-colors"
+      fields:
+        - { label: "Primary", name: "primary", widget: "color" }
+        - { label: "Secondary", name: "secondary", widget: "color" }
+        - { label: "Success", name: "success", widget: "color" }
+        - { label: "Info", name: "info", widget: "color" }
+        - { label: "Warning", name: "warning", widget: "color" }
+        - { label: "Danger", name: "danger", widget: "color" }
+
   - name: "blog"
     label: "Blog"
     folder: "src/pages/blog"
@@ -121,6 +137,62 @@ collections:
                   },
                 ],
             }
+      - file: "src/pages/home.md"
+        label: "Home Page"
+        name: "home"
+        fields:
+          - {
+              label: "Template Key",
+              name: "templateKey",
+              widget: "hidden",
+              default: "home-page",
+            }
+          - { label: Title, name: title, widget: string }
+          - {
+              label: Hero Carousel,
+              name: carousel,
+              widget: object,
+              fields:
+                [
+                  { label: Show Arrows, name: showControls, widget: boolean },
+                  { label: Show Indicators, name: showIndicators, widget: boolean },
+                  {
+                    label: Slides,
+                    name: slides,
+                    widget: list,
+                    min: 1,
+                    fields:
+                      [
+                        { label: Align Content, name: align, widget: select, options: ["left", "center", "right"], default: "center"},
+                        { label: Image, name: image, widget: image },
+                        { label: Heading, name: heading, widget: markdown, minimal: true, editor_components: [], default: '# **Heading**' },
+                        { label: SubHeading, name: subheading, widget: markdown, minimal: true, editor_components: [] },
+                      ],
+                  },
+                ],
+            }
+          - {
+              label: Products,
+              name: products,
+              widget: object,
+              fields:
+                [
+                  {
+                    label: Columns,
+                    name: columns,
+                    widget: list,
+                    summary: '{{fields.heading}}',
+                    min: 1,
+                    fields:
+                      [
+                        { label: Image, name: image, widget: image },
+                        { label: Heading, name: heading, widget: string },
+                        { label: SubHeading, name: subheading, widget: markdown, minimal: true, editor_components: [] },
+                      ],
+                  },
+                ],
+            }
+          - { label: "Body", name: "body", widget: "markdown"}
       - file: "src/pages/about/index.md"
         label: "About"
         name: "about"

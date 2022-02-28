@@ -5,7 +5,6 @@ import { GatsbyImage, getImage } from "gatsby-plugin-image";
 
 import Layout from "../components/Layout";
 import Features from "../components/Features";
-import BlogRoll from "../components/BlogRoll";
 import FullWidthImage from "../components/FullWidthImage";
 
 // eslint-disable-next-line
@@ -22,15 +21,16 @@ export const IndexPageTemplate = ({
 
   return (
     <main>
+      <FullWidthImage img={heroImage} title={title} subheading={subheading} />
       <section class="hero is-fullheight is-default is-bold">
       <div class="hero-body">
           <div class="container">
               <div class="columns is-vcentered">
                   <div class="column is-5 is-offset-1 landing-caption">
                       <h1 class="title is-1 is-bold is-spaced">
-                          Manage, Deploy.
+                         {mainpitch.title}
                       </h1>
-                      <h2 class="subtitle is-5 is-muted">Lorem ipsum sit dolor amet is a dummy text used by typography industry </h2>
+                      <h2 class="subtitle is-5 is-muted">{mainpitch.description}</h2>
                       <div class="button-wrap">
                           <a class="button cta is-rounded primary-btn raised">
                               Get Started
@@ -45,8 +45,9 @@ export const IndexPageTemplate = ({
                           <GatsbyImage src="/img/illustrations/worker.svg" alt="Description"></GatsbyImage>
                       </figure>
                   </div>
-
               </div>
+
+              <Features gridItems={intro.blurbs} />
           </div>
       </div>
 

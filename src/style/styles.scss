@@ -1,0 +1,75 @@
+
+//Nav Menu
+.navbar-brand-text {
+    @extend .px-2;
+    font-family: 'Montserrat';
+    font-size: 30px;
+    letter-spacing: 2px;
+    font-weight: 500;
+    color: $primary;
+}
+
+.nav-link {
+    color: rgba(0, 0, 0, 0.55);
+}
+.nav-link.active {
+    color: rgba(123, 148, 201, 0.9) !important;
+}
+.nav-link:hover {
+    color: $nav-link-color !important;
+}
+
+.dropdown-menu .nav-link {
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+}
+
+//Hero Carousel
+.carousel-control-prev, .carousel-control-next {
+    width: 7%;
+}
+
+.carousel-control-prev-icon::after, .carousel-control-next-icon::after {
+    font-family: $fa-style-family; //set in FontAwesome/_variables.scss (Default FA 6 Free)
+}
+
+.full-width-image-title {
+    color: $light;
+    @extend .pb-2;
+}
+
+.full-width-image-subheading {
+    color: $light;
+}
+
+// Back to Top button
+.back-to-top {
+    position: fixed;
+    visibility: hidden;
+    opacity: 0;
+    right: 15px;
+    bottom: 15px;
+    z-index: 996;
+    background: #5777ba !important;
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+    transition: all 0.4s;
+  }
+  
+  .back-to-top i {
+    font-size: 24px;
+    color: #fff;
+    line-height: 0;
+  }
+  
+  .back-to-top:hover {
+    background: #748ec6;
+    color: #fff;
+  }
+  
+  .back-to-top.active {
+    visibility: visible;
+    opacity: 1;
+  }
+  

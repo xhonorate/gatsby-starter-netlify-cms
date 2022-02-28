@@ -1,14 +1,18 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { GatsbyImage } from "gatsby-plugin-image";
+import { MDBContainer } from 'mdb-react-ui-kit';
+import PreviewCompatibleImage from './PreviewCompatibleImage';
+import MDRenderer from './MDRenderer';
 
 export default function FullWidthImage(props) {
   const {
-    height = 400,
+    height = 420,
     img,
     title,
     subheading,
-    imgPosition = "top left",
+    align = "center",
+    imgPosition = "center",
   } = props;
 
   return (
@@ -18,87 +22,46 @@ export default function FullWidthImage(props) {
         style={{
           display: "grid",
           alignItems: "center",
+          minHeight: height,
         }}
-      >
-        {img?.url ? (
-          <img
-            src={img}
-            objectFit={"cover"}
-            objectPosition={imgPosition}
-            style={{
-              gridArea: "1/1",
-              // You can set a maximum height for the image, if you wish.
-              height: height,
-              width: "100%",
-            }}
-            // You can optionally force an aspect ratio for the generated image
-            aspectratio={3 / 1}
-            // This is a presentational image, so the alt should be an empty string
-            alt=""
-            formats={["auto", "webp", "avif"]}
-          />
-        ) : (
-          <GatsbyImage
-            image={img}
-            objectFit={"cover"}
-            objectPosition={imgPosition}
-            style={{
-              gridArea: "1/1",
-              // You can set a maximum height for the image, if you wish.
-              maxHeight: height,
-            }}
-            layout="fullWidth"
-            // You can optionally force an aspect ratio for the generated image
-            aspectratio={3 / 1}
-            // This is a presentational image, so the alt should be an empty string
-            alt=""
-            formats={["auto", "webp", "avif"]}
-          />
-        )}
+      >       
+        <PreviewCompatibleImage
+          imageInfo={{
+            image: img,
+            alt: "hero-image",
+            options: {
+              style: {
+                gridArea: "1/1",
+                width: "100%",
+                height: "100%"
+              },
+              objectFit: "cover",
+              objectPosition: imgPosition,
+              layout: "fullWidth",
+              // You can optionally force an aspect ratio for the generated image
+              //aspectratio={3 / 1}
+              // This is a presentational image, so the alt should be an empty string
+              formats: ["auto", "webp", "avif"],     
+            }     
+          }}   
+        />
+
         {(title || subheading) && (
-          <div
+          <MDBContainer
+            className="px-5 py-4 py-md-0"
             style={{
               // By using the same grid area for both, they are stacked on top of each other
               gridArea: "1/1",
               position: "relative",
               // This centers the other elements inside the hero component
-              placeItems: "center",
+              placeItems: align,
               display: "grid",
             }}
           >
             {/* Any content here will be centered in the component */}
-            {title && (
-              <h1
-                className="has-text-weight-bold is-size-3-mobile is-size-2-tablet is-size-1-widescreen"
-                style={{
-                  boxShadow:
-                    "rgb(255, 68, 0) 0.5rem 0px 0px, rgb(255, 68, 0) -0.5rem 0px 0px",
-                  backgroundColor: "rgb(255, 68, 0)",
-                  color: "white",
-                  lineHeight: "1",
-                  padding: "0.25em",
-                }}
-              >
-                {title}
-              </h1>
-            )}
-            {subheading && (
-              <h3
-                className="has-text-weight-bold is-size-5-mobile is-size-5-tablet is-size-4-widescreen"
-                style={{
-                  boxShadow:
-                    "rgb(255, 68, 0) 0.5rem 0px 0px, rgb(255, 68, 0) -0.5rem 0px 0px",
-                  backgroundColor: "rgb(255, 68, 0)",
-                  color: "white",
-                  lineHeight: "1",
-                  padding: "0.25rem",
-                  marginTop: "0.5rem",
-                }}
-              >
-                {subheading}
-              </h3>
-            )}
-          </div>
+            {title && <MDRenderer className="full-width-image-title">{title}</MDRenderer>}
+            {title && <MDRenderer className="lead full-width-image-subheading">{subheading}</MDRenderer>}
+          </MDBContainer>
         )}
       </div>
     </React.Fragment>

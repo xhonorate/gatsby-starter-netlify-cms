@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: "Gatsby + Netlify CMS Starter",
+    title: "WhiteStar Communications Inc.",
     description:
       "This repo contains an example business website that is built with Gatsby, and Netlify CMS.It follows the JAMstack architecture by using Git as a single source of truth, and Netlify for continuous deployment, and CDN distribution.",
   },
@@ -29,6 +29,13 @@ module.exports = {
     {
       resolve: "gatsby-source-filesystem",
       options: {
+        path: `${__dirname}/src/style/config`,
+        name: "config",
+      },
+    },
+    {
+      resolve: "gatsby-source-filesystem",
+      options: {
         path: `${__dirname}/src/img`,
         name: "images",
       },
@@ -36,6 +43,7 @@ module.exports = {
     `gatsby-plugin-image`,
     "gatsby-plugin-web-font-loader",
     "gatsby-plugin-sharp",
+    "gatsby-plugin-fontawesome-css",
     "gatsby-transformer-sharp",
     {
       resolve: "gatsby-transformer-remark",
@@ -70,14 +78,14 @@ module.exports = {
       options: {
         modulePath: `${__dirname}/src/cms/cms.js`,
       },
-    },
+    },/*
     {
       resolve: "gatsby-plugin-purgecss", // purges all unused/unreferenced css rules
       options: {
-        develop: true, // Activates purging in npm run develop
-        purgeOnly: ["/all.sass"], // applies purging only on the bulma css file
+        develop: false, // Activates purging in npm run develop
+        purgeOnly: ["${__dirname}/src/style/main.scss"], // applies purging only on the main css file
       },
-    }, // must be after other CSS plugins
+    }, // must be after other CSS plugins */
     "gatsby-plugin-netlify", // make sure to keep it last in the array
   ],
 };
