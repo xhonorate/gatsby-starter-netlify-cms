@@ -151,6 +151,7 @@ collections:
           - {
               label: Hero Carousel,
               name: carousel,
+              collapsed: true,
               widget: object,
               fields:
                 [
@@ -158,6 +159,7 @@ collections:
                   { label: Show Indicators, name: showIndicators, widget: boolean },
                   {
                     label: Slides,
+                    label_singular: Slide,
                     name: slides,
                     widget: list,
                     min: 1,
@@ -173,26 +175,59 @@ collections:
             }
           - {
               label: Products,
+              label_singular: Product,
               name: products,
-              widget: object,
+              widget: list,
+              summary: '{{fields.heading}}',
+              min: 1,
               fields:
                 [
-                  {
-                    label: Columns,
-                    name: columns,
-                    widget: list,
-                    summary: '{{fields.heading}}',
-                    min: 1,
-                    fields:
-                      [
-                        { label: Image, name: image, widget: image },
-                        { label: Heading, name: heading, widget: string },
-                        { label: SubHeading, name: subheading, widget: markdown, minimal: true, editor_components: [] },
-                      ],
-                  },
+                  { label: Image, name: image, widget: image },
+                  { label: Heading, name: heading, widget: string },
+                  { label: Content, name: content, widget: markdown, editor_components: ['button'] },
                 ],
             }
-          - { label: "Body", name: "body", widget: "markdown"}
+          - {
+              label: Sections,
+              label_singular: Section,
+              name: sections,
+              widget: list,
+              summary: '{{fields.heading}}',
+              fields:
+                [
+                  { label: Text Alignment, name: align, widget: select, options: ["start", "center", "end"], default: "center"},
+                  { label: Heading, name: heading, widget: string },
+                  { label: SubHeading, name: subheading, widget: string, required: false },
+                  { label: Content, name: content, widget: markdown, editor_components: ['button', 'icon-box'] },
+                  {
+                    label: graphic,
+                    name: graphic,
+                    widget: list,
+                    max: 1,
+                    types:
+                      [
+                        { 
+                          label: Image, 
+                          name: image-object, 
+                          widget: object, 
+                          fields: [
+                            { label: Position, name: position, widget: select, options: ["left", "right", "above", "below"], default: "above"},
+                            { label: Image, name: image, widget: image }
+                          ]
+                        },
+                        { 
+                          label: Animation,
+                          name: animation-object, 
+                          widget: object, 
+                          fields: [
+                            { label: Position, name: position, widget: select, options: ["left", "right", "above", "below"], default: "above"},
+                            { label: Lottie URL, name: lottie, widget: string }
+                          ]
+                        },
+                      ],
+                  }
+                ]
+            }
       - file: "src/pages/about/index.md"
         label: "About"
         name: "about"

@@ -1,31 +1,25 @@
-const ButtonComponent = {
+const IconBoxComponent = {
     // Internal id of the component
-    id: "button",
+    id: "icon-box",
     // Visible label
-    label: "Button",
+    label: "Icon Box",
     // Fields the user need to fill out when adding an instance of the component
     fields: [
       {
-        name: 'color',
-        label: 'Color',
-        widget: "select",
-        options: ["primary", "secondary", "success", "info", "warning", "danger", "light", "dark"],
+        name: 'icon',
+        label: 'Icon',
+        widget: "fontawesome-solid",
       },
       {
-        name: 'outlined',
-        label: 'Outlined',
-        widget: 'boolean'
+        name: 'heading',
+        label: 'Heading',
+        widget: 'string'
       },
       {
         name: 'text',
         label: 'Text',
         widget: 'string'
       },
-      {
-        name: 'link',
-        label: 'Link To',
-        widget: "string"
-      }
       /*
       {
         name: 'link',
@@ -45,27 +39,18 @@ const ButtonComponent = {
     //
     // Additionally, it's recommended that you use non-greedy capturing groups (e.g.
     // `(.*?)` vs `(.*)`), especially if matching against newline characters.
-    pattern: /^\s*?<a\s*?role='button' class='ripple ripple-surface btn btn((-outline)*.?)-(.*?)' href='(.*?)'>\s*?(.*?)\s*?<\/a>/ms,
+    pattern: /^\s*?<div class='col icon-box'>\s*<i class='(.*?)'><\/i>\s*<h4>(.*?)<\/h4>\s*<p>(.*?)<\/p>\s*<\/div>/ms,
     // Given a RegExp Match object
     // (https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/match#return_value),
     // return an object with one property for each field defined in `fields`.
     //
     // This is used to populate the custom widget in the markdown editor in the CMS.
     fromBlock: function(match) {
-        if (match[2] == '-outline') {
-            return {
-                color: match[3],
-                outlined: true,
-                text: match[5],
-                link: match[4],
-            }
-        } else {
-            return {
-                color: match[3],
-                outlined: false,
-                text: match[5],
-                link: match[4],
-            }
+        const icon = match[1];
+        return {
+            icon: icon.replace('fa-',''),
+            heading: match[2],
+            text: match[3],
         };
     },
     // Given an object with one property for each field defined in `fields`,
@@ -74,9 +59,11 @@ const ButtonComponent = {
     // This is used to serialize the data from the custom widget to the
     // markdown document
     toBlock: function(data) {
-      return `
-  <a role='button' class='ripple ripple-surface btn btn-${data.outlined ? 'outline-' : ''}${data.color}' href='${data.link}'>${data.text}</a>
-  `;
+      return `<div class='col icon-box'>
+      <i class='${data.icon.split(' ')[0]} fa-${data.icon.split(' ')[1]}'></i>
+      <h4>${data.heading}</h4>
+      <p>${data.text}</p>
+      </div>`;
     },
     // Preview output for this component. Can either be a string or a React component
     // (component gives better render performance)
@@ -85,4 +72,4 @@ const ButtonComponent = {
     }
 }
 
-export default ButtonComponent
+export default IconBoxComponent

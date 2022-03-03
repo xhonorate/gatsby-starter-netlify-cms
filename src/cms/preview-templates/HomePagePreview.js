@@ -10,6 +10,8 @@ const HomePagePreview = ({ entry }) => {
     <HomePageTemplate
       title={data.title}
       carousel={data.carousel || {}}
+      products={data.products || {}}
+      sections={data.sections || {}}
     />
     );
   } else {

@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Link, graphql, StaticQuery } from 'gatsby'
-import PreviewCompatibleImage from './PreviewCompatibleImage'
+import { graphql, StaticQuery } from 'gatsby'
 
 class ThemeStyleTemplate extends React.Component {
   render() {
@@ -45,7 +44,7 @@ export default function ThemeStyle() {
     <StaticQuery
       query={graphql`
         query ThemeStyleQuery {
-          markdownRemark(frontmatter: { templateKey: { eq: "theme-colors" }}) {
+          markdownRemark( fields: {slug: {eq: "/theme-colors/"}}) {
             frontmatter {
               primary
               secondary

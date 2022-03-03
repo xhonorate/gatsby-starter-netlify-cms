@@ -6,7 +6,7 @@ import remarkHtml from 'remark-html'
 const MDRenderer = (props) => {
     let content = remark()
         .use(remarkPresetLintMarkdownStyleGuide)
-        .use(remarkHtml)
+        .use(remarkHtml, {sanitize: false})
         .processSync(props.children).toString();
 
     const CustomTag = `${props.tag || 'div' }`;

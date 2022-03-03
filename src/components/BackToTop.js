@@ -11,7 +11,7 @@ class BackToTop extends React.Component {
 
     render() {
         return (
-            <MDBBtn className={"back-to-top d-flex align-items-center justify-content-center" + (this.state.active ? " active" : "")}>
+            <MDBBtn href="#" className={"back-to-top d-flex align-items-center justify-content-center" + (this.state.active ? " active" : "")}>
                 <i className="fas fa-angle-up"></i>
             </MDBBtn>
         );

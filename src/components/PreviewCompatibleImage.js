@@ -21,8 +21,11 @@ const PreviewCompatibleImage = ({ imageInfo }) => {
         {...options}
       />
     );
-    // for Netlify CMS 
+    // for SVGs, etc.
+  } else if (!!image.publicURL) {
+    return <img src={image.publicURL} alt={alt} {...options}/>;
   } else if (image) {
+    // for Netlify CMS
     return <img src={image} alt={alt} {...options}/>;
   } else {
     return null

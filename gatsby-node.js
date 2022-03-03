@@ -3,6 +3,21 @@ const path = require('path')
 const { createFilePath } = require('gatsby-source-filesystem')
 const { fmImagesToRelative } = require('gatsby-remark-relative-images')
 
+const fs = require(`fs`)
+
+const SAVED_SCHEMA = `${__dirname}/static/admin/my-typedefs.gql`
+
+exports.createSchemaCustomization = ({ actions }) => {
+  if (fs.existsSync(SAVED_SCHEMA)) {
+    actions.createTypes(fs.readFileSync(SAVED_SCHEMA, { encoding: `utf-8` }))
+  } else {
+    actions.printTypeDefinitions({
+      path: SAVED_SCHEMA,
+      exclude: { types: [`TypeWeDontWant`] },
+    })
+  }
+}
+
 exports.createPages = ({ actions, graphql }) => {
   const { createPage } = actions
 
@@ -33,7 +48,7 @@ exports.createPages = ({ actions, graphql }) => {
 
     posts.forEach((edge) => {
       //do not try to generate pages if templateKey is not set
-      if (edge.node.frontmatter.templateKey == undefined) return;
+      if (edge.node.frontmatter.templateKey == null || edge.node.frontmatter.templateKey == undefined) return;
 
         const id = edge.node.id
         createPage({
