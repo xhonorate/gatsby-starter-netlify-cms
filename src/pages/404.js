@@ -1,12 +1,16 @@
 import * as React from "react";
 import Layout from "../components/Layout";
+import { MDBContainer } from 'mdb-react-ui-kit';
+import Lottie from "../components/Lottie";
+import { Link } from "gatsby";
 
 const NotFoundPage = () => (
   <Layout>
-    <div>
-      <h1>NOT FOUND</h1>
-      <p>You just hit a route that doesn&#39;t exist... the sadness.</p>
-    </div>
+    <MDBContainer fluid>
+      <Link to="/">
+        <Lottie src="https://assets2.lottiefiles.com/packages/lf20_ntskvz2y.json" />
+      </Link>
+    </MDBContainer>
   </Layout>
 );
 

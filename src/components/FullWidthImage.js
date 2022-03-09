@@ -13,6 +13,7 @@ export default function FullWidthImage(props) {
     subheading,
     align = "center",
     imgPosition = "center",
+    children
   } = props;
 
   return (
@@ -61,6 +62,7 @@ export default function FullWidthImage(props) {
             {/* Any content here will be centered in the component */}
             {title && <MDRenderer className="full-width-image-title">{title}</MDRenderer>}
             {title && <MDRenderer className="lead full-width-image-subheading">{subheading}</MDRenderer>}
+            {children}
           </MDBContainer>
         )}
       </div>

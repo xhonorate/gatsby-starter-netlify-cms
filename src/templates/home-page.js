@@ -1,12 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { graphql } from "gatsby";
-import { MDBContainer, MDBRow, MDBCol, MDBScrollspySection } from "mdb-react-ui-kit";
+import { MDBContainer, MDBRow, MDBCol, MDBScrollspySection, MDBBtn } from "mdb-react-ui-kit";
 import Layout from "../components/Layout";
 import HeroCarousel from "../components/HeroCarousel";
-import Content, { HTMLContent } from "../components/Content";
 import PreviewCompatibleImage from "../components/PreviewCompatibleImage";
 import MDRenderer from '../components/MDRenderer';
+import Slider from '../components/Slick';
+import Contact from '../components/Contact';
+import Section from '../components/Section';
 
 // eslint-disable-next-line
 export const HomePageTemplate = ({
@@ -14,16 +16,23 @@ export const HomePageTemplate = ({
     carousel,
     products,
     sections,
-  }) => {  
+    team
+  }) => {
+    const [showContact, setShowContact] = useState(false);
+    const openContact = () => setShowContact(true);
+
+    if (window.location.hash == "#contact" && !showContact) { 
+      openContact();
+    };
+
     return (
         <main>
             <HeroCarousel showIndicators={carousel.showIndicators} showControls={carousel.showControls} slides={carousel.slides}/>
-
             <MDBScrollspySection className="products">
               <MDBContainer>
                 <MDBRow>
-                  {products.map((product) => (
-                    <MDBCol lg="6">
+                  {products.map((product, index) => (
+                    <MDBCol lg="6" id={`product-${index}`} >
                       <MDBContainer className="justify-content-center text-center py-5">
                         <PreviewCompatibleImage 
                           imageInfo={{
@@ -50,43 +59,72 @@ export const HomePageTemplate = ({
                 </MDBRow>
               </MDBContainer>
             </MDBScrollspySection>
-
-            {sections.map((section) => (
+            {sections.map((section, index) => (
               <div>
                 <hr></hr>
-                <MDBScrollspySection>
-                  <MDBContainer>
-                    <MDBRow className={ section.graphic && `section-graphic-${section.graphic[0].position}` }>
-                      <MDBCol className="section-content">
-                        <div className={`text-${section.align} section-title`}>
-                          <h2>{section.heading}</h2>
-                          {section.subheading && <p className="pb-4"><em>{section.subheading}</em></p>}
-                          <MDRenderer>{section.content}</MDRenderer>
-                        </div>
-                      </MDBCol>
-                      { section.graphic &&
-                     
-                        <MDBCol className="section-graphic">
-                        { section.graphic[0].type == "image-object" ?
-                          <PreviewCompatibleImage imageInfo={{  
-                            image: section.graphic[0].image,
-                            alt: "section-image",
-                            options: {
-                              objectFit: "contain",
-                              placeholder: "blurred",
-                              align: section.graphic[0].align,
-                            }
-                          }} /> 
-                          : 
-                          <div>lottie animation goes here</div> } 
-                        </MDBCol>
-                      }
-                    </MDBRow>
-                  </MDBContainer>
-                </MDBScrollspySection>
+                  <Section {...section} id={index === 0 ? "about" : ""} />
               </div>
             ))}
-            <hr></hr>
+            
+            <MDBScrollspySection className="team">
+              <MDBContainer>
+                <MDBRow>
+                  <MDBCol>
+                    <div className="section-title">
+                        <h2>{team.heading}</h2>
+                        <MDRenderer>{team.text}</MDRenderer>
+                    </div>
+                  </MDBCol>
+                </MDBRow>
+              </MDBContainer>
+
+              <MDBContainer>
+                  <Slider 
+                    className='team-slider row'
+                    infinite={true}
+                    lazyLoad='ondemand'
+                    slidesToShow={3}
+                    slidesToScroll={1}
+                    autoplay={true}
+                    autoplaySpeed={3500}
+                    pauseOnHover={true}
+                    responsive={[
+                      {
+                        breakpoint: 992,
+                        settings: {
+                        centerPadding: '40px',
+                        slidesToShow: 1
+                          }
+                      },
+                      {
+                        breakpoint: 1200,
+                        settings: {
+                          slidesToShow: 2
+                        }
+                      },
+                      ]}
+                    arrows={team.showControls}
+                  >
+                    {team.members.map((member) => (
+                      <div className="team-member">
+                        <PreviewCompatibleImage imageInfo={{
+                          image: member.image, 
+                          alt: `picture of ${member.name}`,
+                          options: {
+                            objectFit: "contain",
+                            placeholder: "blurred",
+                          }
+                        }} />
+                        <h3>{member.name}</h3>
+                        <h4>{member.role}</h4>
+                        <MDRenderer className="team-description">{member.description}</MDRenderer>
+                      </div>
+                    ))}
+                  </Slider>
+                </MDBContainer>
+            </MDBScrollspySection>
+
+            <Contact open={showContact} />
         </main>
     );
   };
@@ -100,6 +138,7 @@ export const HomePageTemplate = ({
     }),
     products: PropTypes.array,
     sections: PropTypes.array,
+    team: PropTypes.object
   };
   
   const HomePage = ({ data }) => {
@@ -112,6 +151,7 @@ export const HomePageTemplate = ({
           carousel={frontmatter.carousel}
           products={frontmatter.products}
           sections={frontmatter.sections}
+          team={frontmatter.team}
         />
       </Layout>
     );
@@ -163,12 +203,33 @@ export const HomePageTemplate = ({
             graphic {
               position
               type
+              lottie
+              autoplay
+              controls
+              interactive
+              loop
               image {
                 publicURL,
                 childImageSharp {
                   gatsbyImageData
                 }
               }
+            }
+          }
+          team {
+            heading
+            text
+            showControls
+            members {
+              image {
+                publicURL,
+                childImageSharp {
+                  gatsbyImageData
+                }
+              }
+              name
+              role
+              description
             }
           }
         }

@@ -118,15 +118,31 @@ function withIcon (icons) {
           className={classNameWrapper}
           onBlur={setInactiveState}
           onFocus={setActiveState}
-          style={{ overflow: 'auto', maxHeight: '420px' }}
+          style={{ overflow: 'auto', maxHeight: '500px' }}
         >
           <ReactList
             axis="y"
+            type="simple"
             initialIndex={cux}
-            length={ iconLibrary.length }
+            length={ active ? iconLibrary.length : 1 }
+            pageSize={ iconLibrary.length }
             itemRenderer={(x, key) => {
-              const color = cux === x ? '#5777ba' : '#aeb7c9';
-              if (cux === x || active) {
+              const color = (!active || cux === x) ? '#5777ba' : '#aeb7c9';
+                if (!active) {
+                  return (
+                    <i
+                    key={key}
+                    role="button"
+                    tabIndex={0}
+                    title={iconLibrary[cux].iconName}
+                    style={{
+                      cursor: 'pointer', color, fontSize: 50, padding: 8,
+                    }}
+                  >
+                    <Preview value={iconLibrary[cux]} />
+                  </i>
+                  );
+                }
                 return (
                   <i
                     key={key}
@@ -148,7 +164,7 @@ function withIcon (icons) {
                           selected = `${iconLibrary[x].prefix} ${iconLibrary[x].iconName}`;
                           break;
                       }
-  
+                      
                       onChange(selected);
                     }}
                     style={{
@@ -159,7 +175,6 @@ function withIcon (icons) {
                   </i>
                 );
               }}
-              }
           />
         </div>
       );

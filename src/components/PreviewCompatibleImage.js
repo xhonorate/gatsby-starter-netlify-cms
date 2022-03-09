@@ -26,7 +26,7 @@ const PreviewCompatibleImage = ({ imageInfo }) => {
     return <img src={image.publicURL} alt={alt} {...options}/>;
   } else if (image) {
     // for Netlify CMS
-    return <img src={image} alt={alt} {...options}/>;
+    return <img src={image} alt={alt} style={{maxWidth: "100%", height: 'max-content', margin: 'auto'}} {...options}/>;
   } else {
     return null
   }

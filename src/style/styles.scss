@@ -10,6 +10,7 @@
 }
 
 .nav-link {
+    cursor: pointer;
     color: rgba(0, 0, 0, 0.55);
 }
 .nav-link.active {
@@ -17,6 +18,10 @@
 }
 .nav-link:hover {
     color: $nav-link-color !important;
+}
+
+.dropdown-menu {
+    z-index: 1021 !important;
 }
 
 .dropdown-menu .nav-link {
@@ -72,7 +77,149 @@
     visibility: visible;
     opacity: 1;
   }
+
+
+/* --------------------------------------------------------------
+# Hero Section
+-------------------------------------------------------------- */
+
+#hero {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    padding: 140px 0 100px 0;
+    max-height: 500px;
+  }
   
+  #hero .lottie-anim {
+    max-height: 500px;
+    margin: auto;
+    max-width: 500px;
+  }
+  
+  #hero::before {
+    content: "";
+    position: absolute;
+    right: -100%;
+    top: 20%;
+    width: 250%;
+    height: 200%;
+    z-index: -1;
+    background-color: #e8ecf5;
+    transform: skewY(135deg);
+  }
+  
+  #hero h1 {
+    margin: 0 0 10px 0;
+    font-size: 48px;
+    font-weight: 400;
+    line-height: 56px;
+    color: #5777ba;
+    font-family: "Poppins", sans-serif;
+  }
+  
+  #hero h2 {
+    color: #515f7d;
+    margin-bottom: 50px;
+    font-size: 20px;
+    font-weight: 700;
+  }
+  
+  @media (max-width: 991px) {
+    #hero {
+      text-align: center;
+    }
+  }
+  
+  @media (max-width: 991px) {
+    #hero .hero-img {
+      text-align: center;
+    }
+  }
+  
+  @media (max-width: 991px) {
+    #hero .hero-img img {
+      width: 60%;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    #hero h1 {
+      font-size: 28px;
+      line-height: 36px;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    #hero h2 {
+      font-size: 18px;
+      line-height: 24px;
+      margin-bottom: 30px;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    #hero .hero-img img {
+      width: 70%;
+    }
+  }
+  
+  @media (max-width: 575px) {
+    #hero .hero-img {
+        display: none;
+    }
+  }
+  
+
+/* --------------------------------------------------------------
+# Footer
+-------------------------------------------------------------- */
+
+.footer-clean {
+    background-color: #fff;
+    padding: 0 0 30px 0;
+    color: #47536e;
+    font-size: 14px;
+}
+
+.footer-clean .copyright {
+    margin-top: 14px;
+    margin-bottom: 0;
+    font-size: 13px;
+    text-align: center;
+    float: left;
+    color: #47536e;
+    /*opacity: 0.6;*/
+}
+
+@media (max-width: 768px) {
+    .footer-clean .copyright {
+    float: none;
+    text-align: center;
+    padding: 5px 0;
+    }
+}
+
+
+/* --------------------------------------------------------------
+# Contact
+-------------------------------------------------------------- */
+
+.contact {
+    padding: 20px 40px;
+    background: #f1f3f6;
+    color: #47536e;
+    text-align: center;
+    border-top: 1px solid #fff;
+  }
+
+.contact form {
+  width: 90%;
+  margin: 0 auto;
+  padding: 0px 20%;
+  color: #fff;
+}
+
 
 /* --------------------------------------------------------------
 # Sections General
@@ -108,7 +255,14 @@
   .products {
       margin-top: 30px;
   }
-  
+
+  .section-graphic-none {
+    .section-content {
+        @extend .col-lg-10;
+        @extend .offset-lg-1; 
+    }
+  }
+
   .section-graphic-above {
     .section-content {
         @extend .col-lg-10; 
@@ -146,6 +300,8 @@
         @extend .d-flex; 
         @extend .align-items-stretch; 
         @extend .justify-content-center; 
+        @extend .col-12;
+        @extend .col-lg-7;
     }
     .section-graphic {
         @extend .d-flex; 
@@ -203,3 +359,51 @@
     color: #979aa1;
     margin-left: 75px;
   }
+
+
+
+/* --------------------------------------------------------------
+# Team Section
+-------------------------------------------------------------- */
+
+.team {
+  background-color: #f2f5fa;
+
+  .team-member {
+    box-sizing: content-box;
+    padding: 30px 30px 30px 60px;
+    margin: 30px 10px 30px 60px;
+    min-height: 200px;
+    box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.08);
+    position: relative;
+    background: #fff;
+    max-width: none;
+    width: inherit !important;
+
+    > :first-child {
+        box-shadow: 0px 5px 5px 0px #adb5bd;
+        width: 90px;
+        border-radius: 10px;
+        border: 6px solid #fff;
+        position: absolute;
+        left: -45px;
+        filter: grayscale(1);
+    }
+    h3 {
+        font-size: 18px;
+        font-weight: bold;
+        margin: 10px 0 5px 0;
+        color: #111;
+    }
+    h4 {
+        font-size: 14px;
+        color: #999;
+        margin: 0;
+    }
+        .team-description {
+        /*font-style: italic;*/
+        margin: 15px auto 15px auto;
+        font-size: 13px;
+    }
+  }
+}

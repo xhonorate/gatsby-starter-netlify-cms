@@ -1,4 +1,4 @@
-### Type definitions saved at 2022-03-02T19:41:28.631Z ###
+### Type definitions saved at 2022-03-09T19:08:13.430Z ###
 
 type File implements Node @dontInfer {
   sourceInstanceName: String!
@@ -78,6 +78,7 @@ type Site implements Node @dontInfer {
   polyfill: Boolean
   pathPrefix: String
   jsxRuntime: String
+  trailingSlash: String
 }
 
 type SiteSiteMetadata {
@@ -274,10 +275,10 @@ input AVIFOptions {
 }
 
 input TransformOptions {
-  grayscale: Boolean = false
+  grayscale: Boolean
   duotone: DuotoneGradient
-  rotate: Int = 0
-  trim: Float = 0
+  rotate: Int
+  trim: Float
   cropFocus: ImageCropFocus = ATTENTION
   fit: ImageFit = COVER
 }
@@ -298,12 +299,12 @@ type ImageSharpResize {
 }
 
 type ImageSharp implements Node @childOf(types: ["File"]) @dontInfer {
-  fixed(width: Int, height: Int, base64Width: Int, jpegProgressive: Boolean = true, pngCompressionSpeed: Int = 4, grayscale: Boolean = false, duotone: DuotoneGradient, traceSVG: Potrace, quality: Int, jpegQuality: Int, pngQuality: Int, webpQuality: Int, toFormat: ImageFormat = AUTO, toFormatBase64: ImageFormat = AUTO, cropFocus: ImageCropFocus = ATTENTION, fit: ImageFit = COVER, background: String = "rgba(0,0,0,1)", rotate: Int = 0, trim: Float = 0): ImageSharpFixed
+  fixed(width: Int, height: Int, base64Width: Int, jpegProgressive: Boolean = true, pngCompressionSpeed: Int = 4, grayscale: Boolean, duotone: DuotoneGradient, traceSVG: Potrace, quality: Int, jpegQuality: Int, pngQuality: Int, webpQuality: Int, toFormat: ImageFormat, toFormatBase64: ImageFormat, cropFocus: ImageCropFocus = ATTENTION, fit: ImageFit = COVER, background: String = "rgba(0,0,0,1)", rotate: Int, trim: Float): ImageSharpFixed
   fluid(
     maxWidth: Int
     maxHeight: Int
     base64Width: Int
-    grayscale: Boolean = false
+    grayscale: Boolean
     jpegProgressive: Boolean = true
     pngCompressionSpeed: Int = 4
     duotone: DuotoneGradient
@@ -312,14 +313,14 @@ type ImageSharp implements Node @childOf(types: ["File"]) @dontInfer {
     jpegQuality: Int
     pngQuality: Int
     webpQuality: Int
-    toFormat: ImageFormat = AUTO
-    toFormatBase64: ImageFormat = AUTO
+    toFormat: ImageFormat
+    toFormatBase64: ImageFormat
     cropFocus: ImageCropFocus = ATTENTION
     fit: ImageFit = COVER
     background: String = "rgba(0,0,0,1)"
-    rotate: Int = 0
-    trim: Float = 0
-    sizes: String = ""
+    rotate: Int
+    trim: Float
+    sizes: String
 
     """
     A list of image widths to be generated. Example: [ 200, 340, 520, 890 ]
@@ -443,7 +444,7 @@ type ImageSharp implements Node @childOf(types: ["File"]) @dontInfer {
     backgroundColor: String
   ): JSON!
   original: ImageSharpOriginal
-  resize(width: Int, height: Int, quality: Int, jpegQuality: Int, pngQuality: Int, webpQuality: Int, jpegProgressive: Boolean = true, pngCompressionLevel: Int = 9, pngCompressionSpeed: Int = 4, grayscale: Boolean = false, duotone: DuotoneGradient, base64: Boolean = false, traceSVG: Potrace, toFormat: ImageFormat = AUTO, cropFocus: ImageCropFocus = ATTENTION, fit: ImageFit = COVER, background: String = "rgba(0,0,0,1)", rotate: Int = 0, trim: Float = 0): ImageSharpResize
+  resize(width: Int, height: Int, quality: Int, jpegQuality: Int, pngQuality: Int, webpQuality: Int, jpegProgressive: Boolean = true, pngCompressionLevel: Int = 9, pngCompressionSpeed: Int = 4, grayscale: Boolean, duotone: DuotoneGradient, base64: Boolean, traceSVG: Potrace, toFormat: ImageFormat, cropFocus: ImageCropFocus = ATTENTION, fit: ImageFit = COVER, background: String = "rgba(0,0,0,1)", rotate: Int, trim: Float): ImageSharpResize
 }
 
 type MarkdownHeading {
@@ -493,21 +494,26 @@ type MarkdownRemarkFrontmatter @derivedTypes {
   testimonials: [MarkdownRemarkFrontmatterTestimonials]
   full_image: File @fileByRelativePath
   pricing: MarkdownRemarkFrontmatterPricing
-  date: Date @dateformat
-  featuredpost: Boolean
   tags: [String]
+  subheading: String
+  featuredimage: File @fileByRelativePath
+  categories: [MarkdownRemarkFrontmatterCategories]
+  featuredpost: Boolean
+  selectedCategories: [String]
+  relatedPapers: [String]
+  icon: String
   primary: String
   secondary: String
   success: String
   info: String
+  lottie: String
   warning: String
   danger: String
-  featuredimage: File @fileByRelativePath
-  subheading: String
-  mainpitch: MarkdownRemarkFrontmatterMainpitch
+  file: File @fileByRelativePath
   carousel: MarkdownRemarkFrontmatterCarousel
   products: [MarkdownRemarkFrontmatterProducts]
   sections: [MarkdownRemarkFrontmatterSections]
+  team: MarkdownRemarkFrontmatterTeam
 }
 
 type MarkdownRemarkFrontmatterIntro @derivedTypes {
@@ -562,9 +568,19 @@ type MarkdownRemarkFrontmatterPricingPlans {
   price: String
 }
 
-type MarkdownRemarkFrontmatterMainpitch {
-  title: String
-  description: String
+type MarkdownRemarkFrontmatterCategories @derivedTypes {
+  lottie: String
+  name: String
+}
+
+type MarkdownRemarkFrontmatterCategoriesGraphic {
+  type: String
+  position: String
+  autoplay: Boolean
+  loop: Boolean
+  controls: Boolean
+  interactive: String
+  lottie: String
 }
 
 type MarkdownRemarkFrontmatterCarousel @derivedTypes {
@@ -589,17 +605,41 @@ type MarkdownRemarkFrontmatterProducts {
 type MarkdownRemarkFrontmatterSections @derivedTypes {
   align: String
   heading: String
-  subheading: String
   content: String
   graphic: [MarkdownRemarkFrontmatterSectionsGraphic]
+  subheading: String
 }
 
 type MarkdownRemarkFrontmatterSectionsGraphic {
   type: String
   position: String
   image: File @fileByRelativePath
+  autoplay: Boolean
+  loop: Boolean
+  interactive: String
+  lottie: String
+  controls: Boolean
+}
+
+type MarkdownRemarkFrontmatterTeam @derivedTypes {
+  heading: String
+  text: String
+  showControls: Boolean
+  showIndicators: Boolean
+  members: [MarkdownRemarkFrontmatterTeamMembers]
+}
+
+type MarkdownRemarkFrontmatterTeamMembers {
+  name: String
+  role: String
+  description: String
+  image: File @fileByRelativePath
 }
 
 type MarkdownRemarkFields {
   slug: String
+}
+
+type DoczDb implements Node @dontInfer {
+  db: String
 }

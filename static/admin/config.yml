@@ -1,3 +1,68 @@
+Defaults: 
+  - &lottieInteractive
+    default: "none"
+    options: [
+      { label: "None", value: "none" },
+      { label: "Play on Scroll", value: "playOnScroll" },
+      { label: "Sync with Scroll", value: "syncWithScroll" },
+      { label: "Play on Hover", value: "playOnHover" },
+      { label: "Play on Hold", value: "playOnHold" },
+      { label: "Play on Hold (reverse on leave)", value: "playOnHold2" },
+      { label: "Play on Click", value: "playOnClick" },
+      { label: "Toggle on Click", value: "toggleOnClick" },
+      { label: "Cursor Seek Vertical", value: "cursorSeekVertical" },
+      { label: "Cursor Seek Horizontal", value: "cursorSeekHorizontal" }
+    ]
+  - &graphic
+    {
+      label: graphic,
+      name: graphic,
+      widget: list,
+      max: 1,
+      types:
+        [
+          { 
+            label: Image, 
+            name: image-object, 
+            widget: object, 
+            fields: [
+              { label: Position, name: position, widget: select, options: ["left", "right", "above", "below"], default: "above"},
+              { label: Image, name: image, widget: image }
+            ]
+          },
+          { 
+            label: Animation,
+            name: animation-object, 
+            widget: object, 
+            fields: [
+              { label: Position, name: position, widget: select, options: ["left", "right", "above", "below"], default: "above"},
+              { label: Lottie URL, name: lottie, widget: string },
+              { label: Autoplay, name: autoplay, widget: boolean, default: true },
+              { label: Loop, name: loop, widget: boolean, default: true },
+              { label: Show Controls, name: controls, widget: boolean, default: false },
+              { label: Interactive, name: interactive, widget: select, <<: *lottieInteractive }
+            ]
+          },
+        ]
+      }
+  - &sections
+    {
+      label: Sections,
+      label_singular: Section,
+      name: sections,
+      widget: list,
+      summary: '{{fields.heading}}',
+      fields:
+        [
+          { label: Text Alignment, name: align, widget: select, options: ["start", "center", "end"], default: "center"},
+          { label: Heading, name: heading, widget: string },
+          { label: SubHeading, name: subheading, widget: string, required: false },
+          { label: Content, name: content, widget: markdown, editor_components: ['button', 'icon-box'] },
+          { <<: *graphic }
+        ]
+    }
+      
+
 backend:
   name: git-gateway
   branch: master
@@ -13,131 +78,10 @@ media_folder: static/img
 public_folder: /img
 
 collections:
-  - name: "config"
-    label: "Config"
-    editor:
-      preview: false
-    files:
-    - file: "src/style/config/theme-colors.md"
-      label: "Theme Colors"
-      name: "theme-colors"
-      fields:
-        - { label: "Primary", name: "primary", widget: "color" }
-        - { label: "Secondary", name: "secondary", widget: "color" }
-        - { label: "Success", name: "success", widget: "color" }
-        - { label: "Info", name: "info", widget: "color" }
-        - { label: "Warning", name: "warning", widget: "color" }
-        - { label: "Danger", name: "danger", widget: "color" }
-
-  - name: "blog"
-    label: "Blog"
-    folder: "src/pages/blog"
-    create: true
-    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
-    fields:
-      - {
-          label: "Template Key",
-          name: "templateKey",
-          widget: "hidden",
-          default: "blog-post",
-        }
-      - { label: "Title", name: "title", widget: "string" }
-      - { label: "Publish Date", name: "date", widget: "datetime" }
-      - { label: "Description", name: "description", widget: "text" }
-      - { label: "Featured Post", name: "featuredpost", widget: "boolean" }
-      - { label: "Featured Image", name: "featuredimage", widget: image }
-      - { label: "Body", name: "body", widget: "markdown" }
-      - { label: "Tags", name: "tags", widget: "list" }
-
   - name: "pages"
     label: "Pages"
     files:
       - file: "src/pages/index.md"
-        label: "Landing Page"
-        name: "index"
-        fields:
-          - {
-              label: "Template Key",
-              name: "templateKey",
-              widget: "hidden",
-              default: "index-page",
-            }
-          - { label: Title, name: title, widget: string }
-          - { label: Image, name: image, widget: image }
-          - { label: Heading, name: heading, widget: string }
-          - { label: Subheading, name: subheading, widget: string }
-          - {
-              label: Mainpitch,
-              name: mainpitch,
-              widget: object,
-              fields:
-                [
-                  { label: Title, name: title, widget: string },
-                  { label: Description, name: description, widget: text },
-                ],
-            }
-          - { label: Description, name: description, widget: string }
-          - {
-              label: Intro,
-              name: intro,
-              widget: object,
-              fields:
-                [
-                  { label: Heading, name: heading, widget: string },
-                  { label: Description, name: description, widget: text },
-                  {
-                    label: Blurbs,
-                    name: blurbs,
-                    widget: list,
-                    fields:
-                      [
-                        { label: Image, name: image, widget: image },
-                        { label: Text, name: text, widget: text },
-                      ],
-                  },
-                ],
-            }
-          - {
-              label: Main,
-              name: main,
-              widget: object,
-              fields:
-                [
-                  { label: Heading, name: heading, widget: string },
-                  { label: Description, name: description, widget: text },
-                  {
-                    label: Image1,
-                    name: image1,
-                    widget: object,
-                    fields:
-                      [
-                        { label: Image, name: image, widget: image },
-                        { label: Alt, name: alt, widget: string },
-                      ],
-                  },
-                  {
-                    label: Image2,
-                    name: image2,
-                    widget: object,
-                    fields:
-                      [
-                        { label: Image, name: image, widget: image },
-                        { label: Alt, name: alt, widget: string },
-                      ],
-                  },
-                  {
-                    label: Image3,
-                    name: image3,
-                    widget: object,
-                    fields:
-                      [
-                        { label: Image, name: image, widget: image },
-                        { label: Alt, name: alt, widget: string },
-                      ],
-                  },
-                ],
-            }
-      - file: "src/pages/home.md"
         label: "Home Page"
         name: "home"
         fields:
@@ -155,8 +99,8 @@ collections:
               widget: object,
               fields:
                 [
-                  { label: Show Arrows, name: showControls, widget: boolean },
-                  { label: Show Indicators, name: showIndicators, widget: boolean },
+                  { label: Show Arrows, name: showControls, widget: boolean, default: true },
+                  { label: Show Indicators, name: showIndicators, widget: boolean, default: true },
                   {
                     label: Slides,
                     label_singular: Slide,
@@ -187,167 +131,139 @@ collections:
                   { label: Content, name: content, widget: markdown, editor_components: ['button'] },
                 ],
             }
+          - { <<: *sections }
           - {
-              label: Sections,
-              label_singular: Section,
-              name: sections,
-              widget: list,
-              summary: '{{fields.heading}}',
+              label: Team Section,
+              name: team,
+              collapsed: true,
+              widget: object,
               fields:
                 [
-                  { label: Text Alignment, name: align, widget: select, options: ["start", "center", "end"], default: "center"},
                   { label: Heading, name: heading, widget: string },
-                  { label: SubHeading, name: subheading, widget: string, required: false },
-                  { label: Content, name: content, widget: markdown, editor_components: ['button', 'icon-box'] },
+                  { label: Text, name: text, widget: markdown, minimal: true },
+                  { label: Show Arrows, name: showControls, widget: boolean, default: true },
                   {
-                    label: graphic,
-                    name: graphic,
+                    label: Team Members,
+                    label_singular: Team Member,
+                    name: members,
                     widget: list,
-                    max: 1,
-                    types:
+                    fields:
                       [
-                        { 
-                          label: Image, 
-                          name: image-object, 
-                          widget: object, 
-                          fields: [
-                            { label: Position, name: position, widget: select, options: ["left", "right", "above", "below"], default: "above"},
-                            { label: Image, name: image, widget: image }
-                          ]
-                        },
-                        { 
-                          label: Animation,
-                          name: animation-object, 
-                          widget: object, 
-                          fields: [
-                            { label: Position, name: position, widget: select, options: ["left", "right", "above", "below"], default: "above"},
-                            { label: Lottie URL, name: lottie, widget: string }
-                          ]
-                        },
+                        { label: Name, name: name, widget: string},
+                        { label: Role, name: role, widget: string },
+                        { label: Image, name: image, widget: image },
+                        { label: Description, name: description, widget: markdown, minimal: true, editor_components: [] },
                       ],
-                  }
-                ]
+                  },
+                ],
             }
-      - file: "src/pages/about/index.md"
-        label: "About"
-        name: "about"
+
+      - file: "src/pages/announcements.md"
+        label: "Announcements"
+        name: "announcements"
         fields:
           - {
               label: "Template Key",
               name: "templateKey",
               widget: "hidden",
-              default: "about-page",
+              default: "announcement-page",
             }
-          - { label: "Title", name: "title", widget: "string" }
-          - { label: "Body", name: "body", widget: "markdown" }
-      - file: "src/pages/products/index.md"
-        label: "Products Page"
-        name: "products"
+          - { label: "Heading", name: "heading", widget: "string" }
+          - { label: "Subheading", name: "subheading", widget: "string" }
+          - { label: "Image", name: "image", widget: "image" }
+          - { label: "File", name: "file", widget: "file", required: false }
+
+      - file: "src/pages/whitepapers/index.md"
+        label: "White Papers"
+        name: "whitepapers-index"
         fields:
           - {
               label: "Template Key",
               name: "templateKey",
               widget: "hidden",
-              default: "product-page",
+              default: "white-papers",
             }
-          - { label: Title, name: title, widget: string }
-          - { label: Image, name: image, widget: image }
-          - { label: Heading, name: heading, widget: string }
-          - { label: Description, name: description, widget: string }
+          - { label: "Title", name: "title", widget: "string", default: "White Papers" }
+          - { label: "Subheading", name: "subheading", widget: "string", required: false }
+          - { label: "Section Heading", name: "heading", widget: "string" }
+          - { label: "Section Text", name: "body", widget: "markdown", required: false }
           - {
-              label: Intro,
-              name: intro,
-              widget: object,
-              fields:
-                [
-                  { label: Heading, name: heading, widget: string },
-                  { label: Description, name: description, widget: text },
-                  {
-                    label: Blurbs,
-                    name: blurbs,
-                    widget: list,
-                    fields:
-                      [
-                        { label: Image, name: image, widget: image },
-                        { label: Text, name: text, widget: text },
-                      ],
-                  },
-                ],
-            }
-          - {
-              label: Main,
-              name: main,
-              widget: object,
-              fields:
-                [
-                  { label: Heading, name: heading, widget: string },
-                  { label: Description, name: description, widget: text },
-                  {
-                    label: Image1,
-                    name: image1,
-                    widget: object,
-                    fields:
-                      [
-                        { label: Image, name: image, widget: image },
-                        { label: Alt, name: alt, widget: string },
-                      ],
-                  },
-                  {
-                    label: Image2,
-                    name: image2,
-                    widget: object,
-                    fields:
-                      [
-                        { label: Image, name: image, widget: image },
-                        { label: Alt, name: alt, widget: string },
-                      ],
-                  },
-                  {
-                    label: Image3,
-                    name: image3,
-                    widget: object,
-                    fields:
-                      [
-                        { label: Image, name: image, widget: image },
-                        { label: Alt, name: alt, widget: string },
-                      ],
-                  },
-                ],
-            }
-          - {
-              label: Testimonials,
-              name: testimonials,
+              label: Categories,
+              label_singular: Category,
+              name: categories,
               widget: list,
               fields:
                 [
-                  { label: Quote, name: quote, widget: string },
-                  { label: Author, name: author, widget: string },
+                  { label: Name, name: name, widget: string},
+                  { label: Animation URL, name: lottie, widget: string, required: false }
                 ],
             }
-          - { label: Full_image, name: full_image, widget: image }
-          - {
-              label: Pricing,
-              name: pricing,
-              widget: object,
-              fields:
-                [
-                  { label: Heading, name: heading, widget: string },
-                  { label: Description, name: description, widget: string },
-                  {
-                    label: Plans,
-                    name: plans,
-                    widget: list,
-                    fields:
-                      [
-                        { label: Plan, name: plan, widget: string },
-                        { label: Price, name: price, widget: string },
-                        {
-                          label: Description,
-                          name: description,
-                          widget: string,
-                        },
-                        { label: Items, name: items, widget: list },
-                      ],
-                  },
-                ],
-            }
+
+  - name: "whitepapers"
+    label: "White Papers"
+    label_singular: "White Paper"
+    folder: "src/pages/whitepapers/papers"
+    create: true
+    fields:
+      - {
+          label: "Template Key",
+          name: "templateKey",
+          widget: "hidden",
+          default: "white-paper",
+        }
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Subheading", name: "subheading", widget: "string" }
+      - { 
+          label: "Categories",
+          name: "selectedCategories", 
+          widget: "relation",
+          multiple: true,
+          min: 1,
+          collection: "pages", 
+          file: "whitepapers-index", 
+          value_field: "categories.*.name", 
+          search_fields: ["categories.*.name"]
+        }
+      - { label: "Icon", name: "icon", widget: "fontawesome-solid", default: "fas apple-whole" }
+      - { <<: *sections }
+      - { 
+          label: "Related Papers",
+          name: "relatedPapers", 
+          widget: "relation",
+          multiple: true,
+          required: false,
+          collection: "whitepapers",
+          value_field: "title", 
+          search_fields: ["title"]
+        }
+
+  - name: "docs"
+    label: "Docs"
+    label_singular: "Doc"
+    editor:
+      preview: false
+    folder: "src/docs"
+    create: true
+    slug: "{{fields.route}}"
+    fields:
+      - { label: "Name", name: "name", widget: "string" }
+      - { label: "Route", name: "route", widget: "string", default: "/docs/[page-name]" }
+      - { label: "Menu", name: "menu", widget: "string", required: false }
+      - { label: "Hidden", name: "hidden", widget: "boolean", required: false }
+      - { label: "Body", name: "body", widget: "markdown" }
+
+  - name: "config"
+    label: "Config"
+    editor:
+      preview: false
+    files:
+    - file: "src/style/config/theme-colors.md"
+      label: "Theme Colors"
+      name: "theme-colors"
+      fields:
+        - { label: "Primary", name: "primary", widget: "color" }
+        - { label: "Secondary", name: "secondary", widget: "color" }
+        - { label: "Success", name: "success", widget: "color" }
+        - { label: "Info", name: "info", widget: "color" }
+        - { label: "Warning", name: "warning", widget: "color" }
+        - { label: "Danger", name: "danger", widget: "color" }

@@ -78,7 +78,22 @@ module.exports = {
       options: {
         modulePath: `${__dirname}/src/cms/cms.js`,
       },
-    },    
+    },
+    /*
+    {
+      resolve: '@chakra-ui/gatsby-plugin',
+      options: {
+        resetCSS: false,
+        isUsingColorMode: true,
+      },
+    },
+    /*
+    {
+      resolve: `gatsby-theme-docz`,
+      options: {
+        basePath: `/docs`,
+      },
+    },  
     /*
     {
       resolve: "gatsby-plugin-purgecss", // purges all unused/unreferenced css rules

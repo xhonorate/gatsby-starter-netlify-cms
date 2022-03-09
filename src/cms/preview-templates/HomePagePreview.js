@@ -12,6 +12,7 @@ const HomePagePreview = ({ entry }) => {
       carousel={data.carousel || {}}
       products={data.products || {}}
       sections={data.sections || {}}
+      team={data.team || {}}
     />
     );
   } else {

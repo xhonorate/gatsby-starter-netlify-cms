@@ -1,0 +1,945 @@
+{
+  "config": {
+    "title": "WhiteStar Docs",
+    "description": "WhiteStar.io website adapted for Gatsby with Netlify CMS",
+    "menu": [],
+    "version": "0.0.1",
+    "repository": null,
+    "native": false,
+    "themeConfig": {},
+    "separator": "-",
+    "files": "src/docs/*.{md,markdown,mdx}",
+    "base": "/docs",
+    "ignore": [
+      "README.md",
+      "readme.md",
+      "changelog.md",
+      "code_of_conduct.md",
+      "contributing.md",
+      "license.md"
+    ]
+  },
+  "entries": [
+    {
+      "key": "src/docs/README.md",
+      "value": {
+        "name": "ReadMe",
+        "route": "/docs/readme",
+        "id": "0a525969cbb9233a93f2374a5daf4a59",
+        "filepath": "src/docs/README.md",
+        "fullpath": "/Users/benthomas/Sites/gatsby-starter-netlify-cms/src/docs/README.md",
+        "link": "",
+        "hidden": false,
+        "slug": "src-docs-readme",
+        "menu": "",
+        "headings": [
+          {
+            "slug": "gatsby--netlify-cms-starter",
+            "depth": 1,
+            "value": "Gatsby + Netlify CMS Starter"
+          },
+          {
+            "slug": "features",
+            "depth": 2,
+            "value": "Features"
+          },
+          {
+            "slug": "prerequisites",
+            "depth": 2,
+            "value": "Prerequisites"
+          },
+          {
+            "slug": "getting-started-recommended",
+            "depth": 2,
+            "value": "Getting Started (Recommended)"
+          },
+          {
+            "slug": "access-locally",
+            "depth": 3,
+            "value": "Access Locally"
+          },
+          {
+            "slug": "media-libraries-installed-but-optional",
+            "depth": 3,
+            "value": "Media Libraries (installed, but optional)"
+          },
+          {
+            "slug": "getting-started-without-netlify",
+            "depth": 2,
+            "value": "Getting Started (Without Netlify)"
+          },
+          {
+            "slug": "setting-up-the-cms",
+            "depth": 3,
+            "value": "Setting up the CMS"
+          },
+          {
+            "slug": "debugging",
+            "depth": 2,
+            "value": "Debugging"
+          },
+          {
+            "slug": "purgecss",
+            "depth": 2,
+            "value": "Purgecss"
+          },
+          {
+            "slug": "contributing",
+            "depth": 1,
+            "value": "CONTRIBUTING"
+          }
+        ]
+      }
+    },
+    {
+      "key": "src/docs/docs-api.md",
+      "value": {
+        "name": "API",
+        "route": "/docs/api",
+        "menu": "Api Menu",
+        "hidden": false,
+        "id": "d4d912125c130d21e6363af2f68d713d",
+        "filepath": "src/docs/docs-api.md",
+        "fullpath": "/Users/benthomas/Sites/gatsby-starter-netlify-cms/src/docs/docs-api.md",
+        "link": "",
+        "slug": "src-docs-docs-api",
+        "headings": [
+          {
+            "slug": "this-is-the-api",
+            "depth": 2,
+            "value": "This is the API"
+          },
+          {
+            "slug": "another-section",
+            "depth": 2,
+            "value": "Another Section"
+          }
+        ]
+      }
+    },
+    {
+      "key": "src/docs/docs.md",
+      "value": {
+        "name": "Docs Home",
+        "route": "/docs/",
+        "id": "463046818909b669ee122ff7119bfc58",
+        "filepath": "src/docs/docs.md",
+        "fullpath": "/Users/benthomas/Sites/gatsby-starter-netlify-cms/src/docs/docs.md",
+        "link": "",
+        "hidden": false,
+        "slug": "src-docs-docs",
+        "menu": "",
+        "headings": [
+          {
+            "slug": "welcome-to-the-docs",
+            "depth": 1,
+            "value": "Welcome to the Docs!"
+          }
+        ]
+      }
+    }
+  ],
+  "props": [
+    {
+      "key": "src/components/BackToTop.js",
+      "value": [
+        {
+          "description": "",
+          "displayName": "BackToTop",
+          "methods": [
+            {
+              "name": "handleScroll",
+              "docblock": null,
+              "modifiers": [],
+              "params": [],
+              "returns": null
+            }
+          ],
+          "actualName": "BackToTop"
+        }
+      ]
+    },
+    {
+      "key": "src/components/BlogRoll.js",
+      "value": [
+        {
+          "description": "",
+          "displayName": "BlogRoll",
+          "methods": [],
+          "actualName": "BlogRoll",
+          "props": {
+            "data": {
+              "type": {
+                "name": "shape",
+                "value": {
+                  "allMarkdownRemark": {
+                    "name": "shape",
+                    "value": {
+                      "edges": {
+                        "name": "array",
+                        "required": false
+                      }
+                    },
+                    "required": false
+                  }
+                }
+              },
+              "required": false,
+              "description": ""
+            }
+          }
+        }
+      ]
+    },
+    {
+      "key": "src/components/Contact.js",
+      "value": [
+        {
+          "description": "",
+          "displayName": "Contact",
+          "methods": [
+            {
+              "name": "toggleShow",
+              "docblock": null,
+              "modifiers": [],
+              "params": [],
+              "returns": null
+            }
+          ],
+          "actualName": "Contact"
+        }
+      ]
+    },
+    {
+      "key": "src/components/Features.js",
+      "value": [
+        {
+          "description": "",
+          "displayName": "FeatureGrid",
+          "methods": [],
+          "actualName": "FeatureGrid",
+          "props": {
+            "gridItems": {
+              "type": {
+                "name": "arrayOf",
+                "value": {
+                  "name": "shape",
+                  "value": {
+                    "image": {
+                      "name": "union",
+                      "value": [
+                        {
+                          "name": "object"
+                        },
+                        {
+                          "name": "string"
+                        }
+                      ],
+                      "required": false
+                    },
+                    "text": {
+                      "name": "string",
+                      "required": false
+                    }
+                  }
+                }
+              },
+              "required": false,
+              "description": ""
+            }
+          }
+        }
+      ]
+    },
+    {
+      "key": "src/components/Footer.js",
+      "value": [
+        {
+          "description": "",
+          "methods": [],
+          "actualName": ""
+        }
+      ]
+    },
+    {
+      "key": "src/components/FullWidthImage.js",
+      "value": [
+        {
+          "description": "",
+          "displayName": "FullWidthImage",
+          "methods": [],
+          "actualName": "FullWidthImage",
+          "props": {
+            "img": {
+              "type": {
+                "name": "union",
+                "value": [
+                  {
+                    "name": "object"
+                  },
+                  {
+                    "name": "string"
+                  }
+                ]
+              },
+              "required": false,
+              "description": ""
+            },
+            "title": {
+              "type": {
+                "name": "string"
+              },
+              "required": false,
+              "description": ""
+            },
+            "height": {
+              "type": {
+                "name": "number"
+              },
+              "required": false,
+              "description": ""
+            },
+            "subheading": {
+              "type": {
+                "name": "string"
+              },
+              "required": false,
+              "description": ""
+            }
+          }
+        }
+      ]
+    },
+    {
+      "key": "src/components/GatsbyMDB.js",
+      "value": [
+        {
+          "description": "",
+          "displayName": "GMDBNavbarLink",
+          "methods": [],
+          "actualName": "GMDBNavbarLink"
+        },
+        {
+          "description": "",
+          "displayName": "GMDBDropdownLink",
+          "methods": [],
+          "actualName": "GMDBDropdownLink"
+        },
+        {
+          "description": "",
+          "displayName": "GMDBNavbarBrand",
+          "methods": [],
+          "actualName": "GMDBNavbarBrand"
+        }
+      ]
+    },
+    {
+      "key": "src/components/HeroCarousel.js",
+      "value": [
+        {
+          "description": "",
+          "displayName": "HeroCarousel",
+          "methods": [],
+          "actualName": "HeroCarousel",
+          "props": {
+            "slides": {
+              "type": {
+                "name": "arrayOf",
+                "value": {
+                  "name": "shape",
+                  "value": {
+                    "image": {
+                      "name": "union",
+                      "value": [
+                        {
+                          "name": "object"
+                        },
+                        {
+                          "name": "string"
+                        }
+                      ],
+                      "required": false
+                    },
+                    "heading": {
+                      "name": "string",
+                      "required": false
+                    },
+                    "subheading": {
+                      "name": "string",
+                      "required": false
+                    },
+                    "align": {
+                      "name": "string",
+                      "required": false
+                    }
+                  }
+                }
+              },
+              "required": false,
+              "description": ""
+            }
+          }
+        }
+      ]
+    },
+    {
+      "key": "src/components/Layout.js",
+      "value": [
+        {
+          "description": "",
+          "displayName": "TemplateWrapper",
+          "methods": [],
+          "actualName": "TemplateWrapper"
+        }
+      ]
+    },
+    {
+      "key": "src/components/Lottie.js",
+      "value": [
+        {
+          "description": "",
+          "displayName": "Lottie",
+          "methods": [],
+          "actualName": "Lottie",
+          "props": {
+            "src": {
+              "type": {
+                "name": "string"
+              },
+              "required": true,
+              "description": ""
+            },
+            "id": {
+              "type": {
+                "name": "string"
+              },
+              "required": false,
+              "description": ""
+            },
+            "autoplay": {
+              "type": {
+                "name": "bool"
+              },
+              "required": false,
+              "description": "",
+              "defaultValue": {
+                "value": "true",
+                "computed": false
+              }
+            },
+            "loop": {
+              "type": {
+                "name": "bool"
+              },
+              "required": false,
+              "description": "",
+              "defaultValue": {
+                "value": "true",
+                "computed": false
+              }
+            },
+            "controls": {
+              "type": {
+                "name": "bool"
+              },
+              "required": false,
+              "description": "",
+              "defaultValue": {
+                "value": "false",
+                "computed": false
+              }
+            },
+            "interactive": {
+              "type": {
+                "name": "string"
+              },
+              "required": false,
+              "description": ""
+            },
+            "frames": {
+              "type": {
+                "name": "union",
+                "computed": true,
+                "value": "arrayOf(PropTypes.number)"
+              },
+              "required": false,
+              "description": ""
+            },
+            "mode": {
+              "type": {
+                "name": "string"
+              },
+              "required": false,
+              "description": ""
+            },
+            "actions": {
+              "type": {
+                "name": "arrayOf",
+                "value": {
+                  "name": "object"
+                }
+              },
+              "required": false,
+              "description": ""
+            }
+          }
+        }
+      ]
+    },
+    {
+      "key": "src/components/MDRenderer.js",
+      "value": [
+        {
+          "description": "",
+          "displayName": "MDRenderer",
+          "methods": [],
+          "actualName": "MDRenderer"
+        }
+      ]
+    },
+    {
+      "key": "src/components/PreviewCompatibleImage.js",
+      "value": [
+        {
+          "description": "",
+          "displayName": "PreviewCompatibleImage",
+          "methods": [],
+          "actualName": "PreviewCompatibleImage",
+          "props": {
+            "imageInfo": {
+              "type": {
+                "name": "shape",
+                "value": {
+                  "alt": {
+                    "name": "string",
+                    "required": false
+                  },
+                  "childImageSharp": {
+                    "name": "object",
+                    "required": false
+                  },
+                  "image": {
+                    "name": "union",
+                    "value": [
+                      {
+                        "name": "object"
+                      },
+                      {
+                        "name": "string"
+                      }
+                    ],
+                    "required": true
+                  },
+                  "options": {
+                    "name": "object",
+                    "required": false
+                  }
+                }
+              },
+              "required": true,
+              "description": ""
+            }
+          }
+        }
+      ]
+    },
+    {
+      "key": "src/components/Pricing.js",
+      "value": [
+        {
+          "description": "",
+          "displayName": "Pricing",
+          "methods": [],
+          "actualName": "Pricing",
+          "props": {
+            "data": {
+              "type": {
+                "name": "arrayOf",
+                "value": {
+                  "name": "shape",
+                  "value": {
+                    "plan": {
+                      "name": "string",
+                      "required": false
+                    },
+                    "price": {
+                      "name": "union",
+                      "value": [
+                        {
+                          "name": "string"
+                        },
+                        {
+                          "name": "number"
+                        }
+                      ],
+                      "required": false
+                    },
+                    "description": {
+                      "name": "string",
+                      "required": false
+                    },
+                    "items": {
+                      "name": "array",
+                      "required": false
+                    }
+                  }
+                }
+              },
+              "required": false,
+              "description": ""
+            }
+          }
+        }
+      ]
+    },
+    {
+      "key": "src/components/Testimonials.js",
+      "value": [
+        {
+          "description": "",
+          "displayName": "Testimonials",
+          "methods": [],
+          "actualName": "Testimonials",
+          "props": {
+            "testimonials": {
+              "type": {
+                "name": "arrayOf",
+                "value": {
+                  "name": "shape",
+                  "value": {
+                    "quote": {
+                      "name": "string",
+                      "required": false
+                    },
+                    "author": {
+                      "name": "string",
+                      "required": false
+                    }
+                  }
+                }
+              },
+              "required": false,
+              "description": ""
+            }
+          }
+        }
+      ]
+    },
+    {
+      "key": "src/components/ThemeStyle.js",
+      "value": [
+        {
+          "description": "",
+          "displayName": "ThemeStyle",
+          "methods": [],
+          "actualName": "ThemeStyle"
+        }
+      ]
+    },
+    {
+      "key": "src/cms/preview-templates/AboutPagePreview.js",
+      "value": [
+        {
+          "description": "",
+          "displayName": "AboutPagePreview",
+          "methods": [],
+          "actualName": "AboutPagePreview",
+          "props": {
+            "entry": {
+              "type": {
+                "name": "shape",
+                "value": {
+                  "getIn": {
+                    "name": "func",
+                    "required": false
+                  }
+                }
+              },
+              "required": false,
+              "description": ""
+            },
+            "widgetFor": {
+              "type": {
+                "name": "func"
+              },
+              "required": false,
+              "description": ""
+            }
+          }
+        }
+      ]
+    },
+    {
+      "key": "src/cms/preview-templates/BlogPostPreview.js",
+      "value": [
+        {
+          "description": "",
+          "displayName": "BlogPostPreview",
+          "methods": [],
+          "actualName": "BlogPostPreview",
+          "props": {
+            "entry": {
+              "type": {
+                "name": "shape",
+                "value": {
+                  "getIn": {
+                    "name": "func",
+                    "required": false
+                  }
+                }
+              },
+              "required": false,
+              "description": ""
+            },
+            "widgetFor": {
+              "type": {
+                "name": "func"
+              },
+              "required": false,
+              "description": ""
+            }
+          }
+        }
+      ]
+    },
+    {
+      "key": "src/cms/preview-templates/HomePagePreview.js",
+      "value": [
+        {
+          "description": "",
+          "displayName": "HomePagePreview",
+          "methods": [],
+          "actualName": "HomePagePreview",
+          "props": {
+            "entry": {
+              "type": {
+                "name": "shape",
+                "value": {
+                  "getIn": {
+                    "name": "func",
+                    "required": false
+                  }
+                }
+              },
+              "required": false,
+              "description": ""
+            }
+          }
+        }
+      ]
+    },
+    {
+      "key": "src/cms/preview-templates/IndexPagePreview.js",
+      "value": [
+        {
+          "description": "",
+          "displayName": "IndexPagePreview",
+          "methods": [],
+          "actualName": "IndexPagePreview",
+          "props": {
+            "entry": {
+              "type": {
+                "name": "shape",
+                "value": {
+                  "getIn": {
+                    "name": "func",
+                    "required": false
+                  }
+                }
+              },
+              "required": false,
+              "description": ""
+            },
+            "getAsset": {
+              "type": {
+                "name": "func"
+              },
+              "required": false,
+              "description": ""
+            }
+          }
+        }
+      ]
+    },
+    {
+      "key": "src/cms/preview-templates/ProductPagePreview.js",
+      "value": [
+        {
+          "description": "",
+          "displayName": "ProductPagePreview",
+          "methods": [],
+          "actualName": "ProductPagePreview",
+          "props": {
+            "entry": {
+              "type": {
+                "name": "shape",
+                "value": {
+                  "getIn": {
+                    "name": "func",
+                    "required": false
+                  }
+                }
+              },
+              "required": false,
+              "description": ""
+            },
+            "getAsset": {
+              "type": {
+                "name": "func"
+              },
+              "required": false,
+              "description": ""
+            }
+          }
+        }
+      ]
+    },
+    {
+      "key": "src/pages/contact/index.js",
+      "value": [
+        {
+          "description": "",
+          "displayName": "Index",
+          "methods": [
+            {
+              "name": "handleChange",
+              "docblock": null,
+              "modifiers": [],
+              "params": [
+                {
+                  "name": "e",
+                  "type": null
+                }
+              ],
+              "returns": null
+            },
+            {
+              "name": "handleSubmit",
+              "docblock": null,
+              "modifiers": [],
+              "params": [
+                {
+                  "name": "e",
+                  "type": null
+                }
+              ],
+              "returns": null
+            }
+          ],
+          "actualName": "Index"
+        }
+      ]
+    },
+    {
+      "key": "src/pages/tags/index.js",
+      "value": [
+        {
+          "description": "",
+          "displayName": "TagsPage",
+          "methods": [],
+          "actualName": "TagsPage"
+        }
+      ]
+    },
+    {
+      "key": "src/components/Navbar.js",
+      "value": [
+        {
+          "description": "",
+          "displayName": "Navbar",
+          "methods": [],
+          "actualName": "Navbar"
+        }
+      ]
+    },
+    {
+      "key": "src/templates/home-page.js",
+      "value": [
+        {
+          "description": "",
+          "displayName": "HomePageTemplate",
+          "methods": [],
+          "actualName": "HomePageTemplate",
+          "props": {
+            "title": {
+              "type": {
+                "name": "string"
+              },
+              "required": false,
+              "description": ""
+            },
+            "carousel": {
+              "type": {
+                "name": "shape",
+                "value": {
+                  "showControls": {
+                    "name": "bool",
+                    "required": false
+                  },
+                  "showIndicators": {
+                    "name": "bool",
+                    "required": false
+                  },
+                  "slides": {
+                    "name": "array",
+                    "required": false
+                  }
+                }
+              },
+              "required": false,
+              "description": ""
+            },
+            "products": {
+              "type": {
+                "name": "array"
+              },
+              "required": false,
+              "description": ""
+            },
+            "sections": {
+              "type": {
+                "name": "array"
+              },
+              "required": false,
+              "description": ""
+            },
+            "team": {
+              "type": {
+                "name": "object"
+              },
+              "required": false,
+              "description": ""
+            }
+          }
+        },
+        {
+          "description": "",
+          "displayName": "HomePage",
+          "methods": [],
+          "actualName": "HomePage",
+          "props": {
+            "data": {
+              "type": {
+                "name": "shape",
+                "value": {
+                  "markdownRemark": {
+                    "name": "shape",
+                    "value": {
+                      "frontmatter": {
+                        "name": "object",
+                        "required": false
+                      }
+                    },
+                    "required": false
+                  }
+                }
+              },
+              "required": false,
+              "description": ""
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
