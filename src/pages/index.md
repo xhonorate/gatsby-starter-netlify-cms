@@ -19,7 +19,7 @@ carousel:
         SOCIETY Secure Messenger.
       align: center
 products:
-  - heading: SOCIETY Mobile App
+  - heading: SOCIETY Mobile App Here
     image: /img/society.png
     content: >-
       SOCIETY is the world’s most secure messenger and the best way to chat
