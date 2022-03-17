@@ -121,91 +121,94 @@ export default function Navbar() {
         ];
 
         return(
-    <Box>
-      <Flex
-        bg={useColorModeValue('white', 'gray.800')}
-        color={useColorModeValue('gray.600', 'white')}
-        minH={'80px'}
-        py={{ base: 2 }}
-        px={{ base: 6 }}
-        borderBottom={1}
-        borderStyle={'solid'}
-        borderColor={useColorModeValue('gray.200', 'gray.900')}
-        align={'center'}>
-        <Flex
-          flex={{ base: 1, md: 'auto' }}
-          justify={{ base: 'center' }}
-          ml={{ base: -2 }}
-          display={{ base: 'flex', md: 'none' }}>
-          <IconButton
-            onClick={onToggle}
-            icon={
-              isOpen ? <CloseIcon w={3} h={3} /> : <HamburgerIcon w={5} h={5} />
-            }
-            variant={'ghost'}
-            aria-label={'Toggle Navigation'}
-          />
-        </Flex>
-        <Flex flex={{ base: 1 }} alignItems={'center'} justify={{ base: 'center' }}>
-          <AutoLink to="/" style={{display: 'contents'}}>
-            <StaticImage
-                src="../img/Whitestar/Logo_Simple.png"
-                alt='logo'
-                placeholder="tracedSVG"
-                layout="fixed"
-                loading="eager"
-                width={36}
-                height={36}
-              />
-            <Text
-              textAlign={useBreakpointValue({ base: 'center', md: 'left' })}
-              fontFamily='Montserrat'
-              letterSpacing={2}
-              fontSize={32}
-              fontWeight={500}
-              px={2}
-              color={useColorModeValue('primary.500', 'white')}>
-              WhiteStar
-            </Text>
-          </AutoLink>
-          <Spacer />
-          <Flex display={{ base: 'none', md: 'flex' }} ml={10}>
-            { DesktopNav(NAV_ITEMS) }
+        <Box>
+          <Flex
+            bg={useColorModeValue('white', 'gray.800')}
+            color={useColorModeValue('gray.600', 'white')}
+            minH={'80px'}
+            py={{ base: 2 }}
+            px={{ base: 6 }}
+            borderBottom={1}
+            borderStyle={'solid'}
+            borderColor={useColorModeValue('gray.200', 'gray.900')}
+            align={'center'}>
+            <Flex flex={{ base: 1 }} alignItems={'center'} justify={{ base: 'center' }}>
+              <AutoLink to="/#" style={{display: 'contents'}}>
+                <StaticImage
+                    src="../img/Whitestar/Logo_Simple.png"
+                    alt='logo'
+                    placeholder="tracedSVG"
+                    layout="fixed"
+                    loading="eager"
+                    width={36}
+                    height={36}
+                  />
+                <Text
+                  display={{ base: 'none', xs: 'flex', md: 'none', lg: 'flex' }}
+                  textAlign={useBreakpointValue({ base: 'left', md: 'left' })}
+                  fontFamily='Montserrat'
+                  letterSpacing={2}
+                  fontSize={32}
+                  fontWeight={500}
+                  px={2}
+                  color={useColorModeValue('primary.500', 'white')}>
+                  WhiteStar
+                </Text>
+              </AutoLink>
+              <Spacer />
+              <Flex
+                flex={{ base: 1, md: 'auto' }}
+                justify={{ base: 'end' }}
+                display={{ base: 'flex', md: 'none' }}>
+                <IconButton
+                  onClick={onToggle}
+                  icon={
+                    isOpen ? <CloseIcon w={3} h={3} /> : <HamburgerIcon w={5} h={5} />
+                  }
+                  variant={'ghost'}
+                  aria-label={'Toggle Navigation'}
+                />
+              </Flex>
+              <Flex display={{ base: 'none', md: 'flex' }} ml={10}>
+                { DesktopNav(NAV_ITEMS) }
+              </Flex>
+            </Flex>
+            
+            {/*<Stack
+              flex={{ base: 1, md: 0 }}
+              justify={'flex-end'}
+              direction={'row'}
+              spacing={6}>
+              <Button
+                as={'a'}
+                fontSize={'sm'}
+                fontWeight={400}
+                variant={'link'}
+                href={'#'}>
+                Sign In
+              </Button>
+              <Button
+                display={{ base: 'none', md: 'inline-flex' }}
+                fontSize={'sm'}
+                fontWeight={600}
+                color={'white'}
+                bg={'pink.400'}
+                href={'#'}
+                _hover={{
+                  bg: 'pink.300',
+                }}>
+                Sign Up
+              </Button>
+              </Stack>*/}
           </Flex>
-        </Flex>
-        
-        {/*<Stack
-          flex={{ base: 1, md: 0 }}
-          justify={'flex-end'}
-          direction={'row'}
-          spacing={6}>
-          <Button
-            as={'a'}
-            fontSize={'sm'}
-            fontWeight={400}
-            variant={'link'}
-            href={'#'}>
-            Sign In
-          </Button>
-          <Button
-            display={{ base: 'none', md: 'inline-flex' }}
-            fontSize={'sm'}
-            fontWeight={600}
-            color={'white'}
-            bg={'pink.400'}
-            href={'#'}
-            _hover={{
-              bg: 'pink.300',
-            }}>
-            Sign Up
-          </Button>
-          </Stack>*/}
-      </Flex>
 
-      <Collapse in={isOpen} animateOpacity>
-        { MobileNav(NAV_ITEMS) }
-      </Collapse>
-    </Box>)}} />
+          <Collapse in={isOpen} animateOpacity>
+            { MobileNav(NAV_ITEMS) }
+          </Collapse>
+        </Box>
+        )
+      }
+    } />
   );
 }
 
@@ -217,7 +220,7 @@ const DesktopNav = (NAV_ITEMS: Array<NavItem>) => {
   const ref = React.createRef()
 
   return (
-    <Stack direction={'row'} spacing={4}>
+    <Stack justify={'space-between'} direction={'row'} spacing={4}>
       {NAV_ITEMS.map((navItem) => (
         <Box key={navItem.label}>
           <Popover trigger={'hover'} placement={'bottom-start'}>
@@ -230,7 +233,6 @@ const DesktopNav = (NAV_ITEMS: Array<NavItem>) => {
                 fontSize={15}
                 fontWeight={500}
                 fontFamily={'heading'}
-                whiteSpace={'nowrap'}
                 color={linkColor}
                 _hover={{
                   textDecoration: 'none',

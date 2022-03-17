@@ -53,6 +53,15 @@ class ThemeWrapperTemplate extends React.Component {
     const data = this.props.data.markdownRemark.frontmatter
 
     const theme = {
+        breakpoints: {
+          sm: "30em", //default
+          md: "48em", //default
+          lg: "62em", //default
+          xl: "80em", //default
+          'xs': '20em',
+          "2xl": "96em", //default
+        },
+
         colors: {
             primary: colorToShades(data.primary),
             secondary: { 500: data.secondary },
