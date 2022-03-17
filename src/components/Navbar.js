@@ -41,20 +41,22 @@ const NavbarTemplate = class extends React.Component {
       scrolled: false
     };
 
+    this.isBrowser = () => typeof window !== "undefined";
+
     this.handleScroll = this.handleScroll.bind(this);
   }
 
   componentDidMount () {
     this.handleScroll(); //check if scrolltotop should be displayed initially as page loads
-    window.addEventListener('scroll', this.handleScroll); //then add listener for scroll
+    this.isBrowser && window.addEventListener('scroll', this.handleScroll); //then add listener for scroll
   }
 
   componentWillUnmount () {
-      window.removeEventListener('scroll', this.handleScroll);
+      this.isBrowser && window.removeEventListener('scroll', this.handleScroll);
   }
 
   handleScroll () {
-      if (window.scrollY > 100) {
+      if (this.isBrowser && window.scrollY > 100) {
           this.setState({
               scrolled: true
           });

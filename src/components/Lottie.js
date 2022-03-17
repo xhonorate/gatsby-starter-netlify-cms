@@ -1,6 +1,6 @@
 import React from 'react';
-import PropTypes, { array, arrayOf } from 'prop-types'
-import '@lottiefiles/lottie-player';
+import PropTypes, { arrayOf } from 'prop-types'
+import { Player } from "@lottiefiles/react-lottie-player";
 import { create } from '@lottiefiles/lottie-interactivity';
 
 class Lottie extends React.Component {
@@ -116,33 +116,41 @@ class Lottie extends React.Component {
     //strip the id from the file name if it is not given
     this.id = (this.props.id ? this.props.id : this.props.src.match(/(.*).json/)[1] );
     if (this.id.match(/(.*)\/(.*)/)) { this.id = this.id.match(/(.*)\/(.*)/)[2] };
-    if (this.interactive) { this.interactive.player = "#" + this.id };
+    //if (this.interactive) { this.interactive.player = "#" + this.id };
 
+    this.state = { lottie: null };
     this.myRef = React.createRef(); // 1. create a reference for the lottie player
   }
 
   componentDidMount() {
     // 3. listen for player load. see lottie player repo for other events
-    if (this.interactive) {
-		console.log(this.interactive);
+   /* if (this.interactive) {
         const interactive = this.interactive;
         this.myRef.current.addEventListener('load', function (e) {
             create(interactive);
         });
-    }
+    }*/
   }
+
   render() {
     return (
       <div className="lottie-anim">
-        <lottie-player
-          ref={this.myRef} // 2. set the reference for the player
-          id={this.id}
-          autoplay={this.props.autoplay ? true : null}
-          loop={this.props.loop ? true : null}
-          controls={this.props.controls ? true : null}
-          mode="normal"
-          src={this.props.src}
-        ></lottie-player>
+			<Player
+				ref={this.myRef}
+				id={this.id}
+				lottieRef={(instance) => {
+					this.setState({ lottie: instance }); // the lottie instance is returned in the argument of this prop. set it to your local state
+				}}
+				onEvent={(event) => {
+					if (this.interactive && event === "load") {
+						create({player: this.state.lottie, ...this.interactive});
+					}
+				}}
+				autoplay={this.props.autoplay ? true : null}
+				loop={this.props.loop ? true : null}
+				controls={this.props.controls ? true : null}
+				src={this.props.src}
+			></Player>
       </div>
     );
   }

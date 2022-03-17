@@ -3,7 +3,6 @@ import uploadcare from 'netlify-cms-media-library-uploadcare'
 import cloudinary from 'netlify-cms-media-library-cloudinary'
 
 import AboutPagePreview from './preview-templates/AboutPagePreview'
-import ProductPagePreview from './preview-templates/ProductPagePreview'
 import HomePagePreview from './preview-templates/HomePagePreview';
 import ButtonComponent from './components/button';
 import * as FontawesomeWidget from "./widgets/fontawesome.js";
@@ -38,7 +37,6 @@ CMS.registerEditorComponent(IconBoxComponent);
 
 CMS.registerPreviewTemplate('home', HomePagePreview)
 CMS.registerPreviewTemplate('about', AboutPagePreview)
-CMS.registerPreviewTemplate('products', ProductPagePreview)
 CMS.registerPreviewTemplate('whitepapers-index', WhitePapersPreview)
 CMS.registerPreviewTemplate('whitepapers', WhitePaperPagePreview)
 CMS.registerPreviewTemplate('announcements', AnnouncementPagePreview)

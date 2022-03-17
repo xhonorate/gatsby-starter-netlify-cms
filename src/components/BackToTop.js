@@ -7,6 +7,8 @@ class BackToTop extends React.Component {
         super(props);
         this.state = { active: false };
         this.handleScroll = this.handleScroll.bind(this);
+
+        this.isBrowser = () => typeof window !== "undefined";
     }
 
     render() {
@@ -19,11 +21,11 @@ class BackToTop extends React.Component {
 
     componentDidMount () {
         this.handleScroll(); //check if scrolltotop should be displayed initially as page loads
-        window.addEventListener('scroll', this.handleScroll); //then add listener for scroll
+        this.isBrowser() && window.addEventListener('scroll', this.handleScroll); //then add listener for scroll
     }
     
     componentWillUnmount () {
-        window.removeEventListener('scroll', this.handleScroll);
+        this.isBrowser() && window.removeEventListener('scroll', this.handleScroll);
     }
 
     handleScroll () {
