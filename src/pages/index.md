@@ -6,7 +6,7 @@ carousel:
   showIndicators: true
   slides:
     - image: /img/background1dark.png
-      heading: "# The WhiteStar Network"
+      heading: "# The WhiteStar Network Test"
       subheading: The WhiteStar network is an encrypted, pervasive network that
         directs communication between devices without Cloud servers. Our
         patented and patent-pending technologies leverage the exponential growth
