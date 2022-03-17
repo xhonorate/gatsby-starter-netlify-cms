@@ -90,6 +90,10 @@ local_backend: false
 media_folder: static/img
 public_folder: /img
 
+site_url: https://tender-kowalevski-4f537b.netlify.app/
+publish_mode: editorial_workflow
+show_preview_links: true
+
 collections:
   - name: "pages"
     label: "Pages"
