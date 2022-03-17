@@ -12,7 +12,7 @@ import Section from '../components/Section';
 import { Heading } from "@chakra-ui/layout";
 
 // eslint-disable-next-line
-class HomePageTemplate extends React.Component {
+export class HomePageTemplate extends React.Component {
     constructor (props) {
         super(props);
 
