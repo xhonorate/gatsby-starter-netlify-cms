@@ -7,6 +7,17 @@ module.exports = {
   plugins: [
     "gatsby-plugin-react-helmet",
     {
+      resolve: 'gatsby-plugin-typescript',
+      options: {
+        transpileOnly: true, // default
+        compilerOptions: {
+          target: 'es6',
+          experimentalDecorators: true,
+          jsx: 'react'
+        }
+      },
+    },
+    {
       resolve: "gatsby-plugin-sass",
       options: {
       },
@@ -79,22 +90,19 @@ module.exports = {
         modulePath: `${__dirname}/src/cms/cms.js`,
       },
     },
-    /*
     {
       resolve: '@chakra-ui/gatsby-plugin',
       options: {
         resetCSS: false,
         isUsingColorMode: true,
       },
-    },
-    /*
+    },/*
     {
       resolve: `gatsby-theme-docz`,
       options: {
         basePath: `/docs`,
       },
-    },  
-    /*
+    },
     {
       resolve: "gatsby-plugin-purgecss", // purges all unused/unreferenced css rules
       options: {

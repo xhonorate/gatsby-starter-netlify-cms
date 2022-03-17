@@ -6,7 +6,7 @@ carousel:
   showIndicators: true
   slides:
     - image: /img/background1dark.png
-      heading: "# **The WhiteStar Network**"
+      heading: "# The WhiteStar Network"
       subheading: The WhiteStar network is an encrypted, pervasive network that
         directs communication between devices without Cloud servers. Our
         patented and patent-pending technologies leverage the exponential growth
@@ -14,7 +14,7 @@ carousel:
         of censorship-resistant apps, secure IoT products and services.
       align: left
     - image: /img/background2dark.png
-      heading: "## **SOCIETY: The World's Most Secure Messenger App**"
+      heading: "## SOCIETY: The World's Most Secure Messenger App"
       subheading: Communicate in SOCIETY Free Speech Communities and Privately in
         SOCIETY Secure Messenger.
       align: center
@@ -32,7 +32,7 @@ products:
       censorship. With Society you are always in control of your content.
 
 
-        <a role='button' class='ripple ripple-surface btn btn-primary' href='https://societyapp.io'>Download Now</a>
+        <Button variant='solid' colorScheme='primary' to='https://www.societyapp.io'>Download Now</Button>
   - image: /img/affiliatestudio.png
     heading: Whitestar Technologies
     content: >-
@@ -44,7 +44,7 @@ products:
       can focus on building awesome applications.
 
 
-        <a role='button' class='ripple ripple-surface btn btn-primary' href='/#contact'>Request a Demo</a>
+        <Button variant='solid' colorScheme='primary' to='/#contact'>Request a Demo</Button>
 sections:
   - align: start
     heading: Who is WhiteStar Communications?
@@ -62,7 +62,7 @@ sections:
       The WhiteStar Network is a cloudless, secure hybrid peer to peer network that enables direct encrypted communications between devices. Our patented and patent-pending technologies leverage the exponential growth in mobile device capabilities and virtually unlimited 5G bandwidth to empower the creation of an entirely new generation of IoT products and services.
     graphic:
       - type: image-object
-        position: above
+        position: above heading
         image: /img/whitestarinclogo2svg.svg
     subheading: ""
   - align: start
@@ -76,26 +76,14 @@ sections:
       networks with few known, trusted and secured endpoints.
 
 
-      <div class='col icon-box'>
-            <i class='fas fa-eye-slash'></i>
-            <h4>Privacy</h4>
-            <p>Through first party trust peer to peer endpoint connections, you always know who you are interacting with, all the time. Network connections must ‘opt-in’ to communications preventing unwanted SPAM or Phishing attempts. No metadata collection is possible because there is no intermediate cloud storage, there is no opportunity for 3rd party monetization of your personal property.</p>
-            </div>
+      <div class='col icon-box'><i class='fas fa-eye-slash'></i><h4>Privacy</h4><p>Through first party trust peer to peer endpoint connections, you always know who you are interacting with, all the time. Network connections must ‘opt-in’ to communications preventing unwanted SPAM or Phishing attempts. No metadata collection is possible because there is no intermediate cloud storage, there is no opportunity for 3rd party monetization of your personal property.</p></div>
 
-      <div class='col icon-box'>
-            <i class='fas fa-lock'></i>
-            <h4>Security</h4>
-            <p>All Content (Messages, Images, and Videos) is encrypted in flight and at rest on all connected devices. Encryption is accomplished by advanced patent-pending AI which is the strongest allowed by US law and results in the absolute minimum surface area for cybercrime ensuring your content is always safe.</p>
-            </div>
+      <div class='col icon-box'><i class='fas fa-lock'></i><h4>Security</h4><p>All Content (Messages, Images, and Videos) is encrypted in flight and at rest on all connected devices. Encryption is accomplished by advanced patent-pending AI which is the strongest allowed by US law and results in the absolute minimum surface area for cybercrime ensuring your content is always safe.</p></div>
 
-      <div class='col icon-box'>
-            <i class='fas fa-user-shield'></i>
-            <h4>Ownership</h4>
-            <p>Using patented tag switching capabilities, you as a content provider, always retain full control of all of your shared content, meaning decisions on how content is shared, edited, deleted, or monetized is always in your control.</p>
-            </div>
+      <div class='col icon-box'><i class='fas fa-user-shield'></i><h4>Ownership</h4><p>Using patented tag switching capabilities, you as a content provider, always retain full control of all of your shared content, meaning decisions on how content is shared, edited, deleted, or monetized is always in your control.</p></div>
     graphic:
       - type: animation-object
-        position: right
+        position: bottom right
         autoplay: true
         loop: true
         interactive: none

@@ -24,8 +24,8 @@ export const WhitePaperTemplate = ({
         <div>
             <Hero heading={title} subheading={subheading} lottie={anim} />
             <main>
-                {sections && sections.map((section) => (
-                <div>
+                {sections && sections.map((section, index) => (
+                <div key={`section-${index}`} >
                     <Section {...section} />
                 </div>
                 ))}

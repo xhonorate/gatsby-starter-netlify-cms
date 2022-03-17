@@ -9,6 +9,7 @@ import MDRenderer from '../components/MDRenderer';
 import Slider from '../components/Slick';
 import Contact from '../components/Contact';
 import Section from '../components/Section';
+import { Heading } from "@chakra-ui/layout";
 
 // eslint-disable-next-line
 export const HomePageTemplate = ({
@@ -32,7 +33,7 @@ export const HomePageTemplate = ({
               <MDBContainer>
                 <MDBRow>
                   {products.map((product, index) => (
-                    <MDBCol lg="6" id={`product-${index}`} >
+                    <MDBCol key={`product-${index}`} lg="6" id={`product-${index}`} >
                       <MDBContainer className="justify-content-center text-center py-5">
                         <PreviewCompatibleImage 
                           imageInfo={{
@@ -48,9 +49,9 @@ export const HomePageTemplate = ({
                               formats: ["auto", "webp", "avif"],
                             }
                           }} />
-                          <h3 className="my-4">
+                          <Heading as='h3' size='lg' fontWeight='light' py={4}>
                             {product.heading}
-                          </h3>
+                          </Heading>
                         <MDRenderer>{product.content}</MDRenderer>
                         </MDBContainer>
                     </MDBCol>
@@ -60,7 +61,7 @@ export const HomePageTemplate = ({
               </MDBContainer>
             </MDBScrollspySection>
             {sections.map((section, index) => (
-              <div>
+              <div key={`section-${index}`} >
                 <hr></hr>
                   <Section {...section} id={index === 0 ? "about" : ""} />
               </div>
@@ -106,7 +107,7 @@ export const HomePageTemplate = ({
                     arrows={team.showControls}
                   >
                     {team.members.map((member) => (
-                      <div className="team-member">
+                      <div key={member.name} className="team-member">
                         <PreviewCompatibleImage imageInfo={{
                           image: member.image, 
                           alt: `picture of ${member.name}`,

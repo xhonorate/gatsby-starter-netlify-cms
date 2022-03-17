@@ -13,7 +13,7 @@ const HeroCarousel = ({ showControls, showIndicators, slides }) => (
   <MDBCarousel showIndicators={showIndicators} showControls={showControls} fade>
     <MDBCarouselInner>
     {slides.map((slide, index) => (
-      <MDBCarouselItem className={index == 0 ? 'active' : ''}>
+      <MDBCarouselItem key={`slide-${index}`} className={index == 0 ? 'active' : ''}>
         <FullWidthImage 
           img={slide.image}
           title={slide.heading}

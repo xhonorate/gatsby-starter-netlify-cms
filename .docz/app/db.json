@@ -34,9 +34,9 @@
         "menu": "",
         "headings": [
           {
-            "slug": "gatsby--netlify-cms-starter",
+            "slug": "gatsby--netlify-cms-achitecture",
             "depth": 1,
-            "value": "Gatsby + Netlify CMS Starter"
+            "value": "Gatsby + Netlify CMS Achitecture!"
           },
           {
             "slug": "features",
@@ -156,38 +156,6 @@
             }
           ],
           "actualName": "BackToTop"
-        }
-      ]
-    },
-    {
-      "key": "src/components/BlogRoll.js",
-      "value": [
-        {
-          "description": "",
-          "displayName": "BlogRoll",
-          "methods": [],
-          "actualName": "BlogRoll",
-          "props": {
-            "data": {
-              "type": {
-                "name": "shape",
-                "value": {
-                  "allMarkdownRemark": {
-                    "name": "shape",
-                    "value": {
-                      "edges": {
-                        "name": "array",
-                        "required": false
-                      }
-                    },
-                    "required": false
-                  }
-                }
-              },
-              "required": false,
-              "description": ""
-            }
-          }
         }
       ]
     },
@@ -330,6 +298,40 @@
           "displayName": "GMDBNavbarBrand",
           "methods": [],
           "actualName": "GMDBNavbarBrand"
+        }
+      ]
+    },
+    {
+      "key": "src/components/Hero.js",
+      "value": [
+        {
+          "description": "",
+          "displayName": "Hero",
+          "methods": [],
+          "actualName": "Hero",
+          "props": {
+            "heading": {
+              "type": {
+                "name": "string"
+              },
+              "required": false,
+              "description": ""
+            },
+            "subheading": {
+              "type": {
+                "name": "string"
+              },
+              "required": false,
+              "description": ""
+            },
+            "lottie": {
+              "type": {
+                "name": "string"
+              },
+              "required": false,
+              "description": ""
+            }
+          }
         }
       ]
     },
@@ -498,6 +500,17 @@
       ]
     },
     {
+      "key": "src/components/Navbar.js",
+      "value": [
+        {
+          "description": "",
+          "displayName": "Navbar",
+          "methods": [],
+          "actualName": "Navbar"
+        }
+      ]
+    },
+    {
       "key": "src/components/PreviewCompatibleImage.js",
       "value": [
         {
@@ -593,6 +606,61 @@
       ]
     },
     {
+      "key": "src/components/Section.js",
+      "value": [
+        {
+          "description": "",
+          "displayName": "Section",
+          "methods": [],
+          "actualName": "Section",
+          "props": {
+            "align": {
+              "type": {
+                "name": "string"
+              },
+              "required": false,
+              "description": ""
+            },
+            "graphic": {
+              "type": {
+                "name": "array"
+              },
+              "required": false,
+              "description": ""
+            },
+            "heading": {
+              "type": {
+                "name": "string"
+              },
+              "required": false,
+              "description": ""
+            },
+            "subheading": {
+              "type": {
+                "name": "string"
+              },
+              "required": false,
+              "description": ""
+            },
+            "content": {
+              "type": {
+                "name": "any"
+              },
+              "required": false,
+              "description": ""
+            },
+            "id": {
+              "type": {
+                "name": "string"
+              },
+              "required": false,
+              "description": ""
+            }
+          }
+        }
+      ]
+    },
+    {
       "key": "src/components/Testimonials.js",
       "value": [
         {
@@ -670,13 +738,13 @@
       ]
     },
     {
-      "key": "src/cms/preview-templates/BlogPostPreview.js",
+      "key": "src/cms/preview-templates/AnnouncementPagePreview.js",
       "value": [
         {
           "description": "",
-          "displayName": "BlogPostPreview",
+          "displayName": "AnnouncementPagePreview",
           "methods": [],
-          "actualName": "BlogPostPreview",
+          "actualName": "AnnouncementPagePreview",
           "props": {
             "entry": {
               "type": {
@@ -687,13 +755,6 @@
                     "required": false
                   }
                 }
-              },
-              "required": false,
-              "description": ""
-            },
-            "widgetFor": {
-              "type": {
-                "name": "func"
               },
               "required": false,
               "description": ""
@@ -720,39 +781,6 @@
                     "required": false
                   }
                 }
-              },
-              "required": false,
-              "description": ""
-            }
-          }
-        }
-      ]
-    },
-    {
-      "key": "src/cms/preview-templates/IndexPagePreview.js",
-      "value": [
-        {
-          "description": "",
-          "displayName": "IndexPagePreview",
-          "methods": [],
-          "actualName": "IndexPagePreview",
-          "props": {
-            "entry": {
-              "type": {
-                "name": "shape",
-                "value": {
-                  "getIn": {
-                    "name": "func",
-                    "required": false
-                  }
-                }
-              },
-              "required": false,
-              "description": ""
-            },
-            "getAsset": {
-              "type": {
-                "name": "func"
               },
               "required": false,
               "description": ""
@@ -795,6 +823,58 @@
       ]
     },
     {
+      "key": "src/cms/preview-templates/WhitePaperPagePreview.js",
+      "value": [
+        {
+          "description": "",
+          "displayName": "WhitePaperPagePreview",
+          "methods": [],
+          "actualName": "WhitePaperPagePreview",
+          "props": {
+            "entry": {
+              "type": {
+                "name": "shape",
+                "value": {
+                  "getIn": {
+                    "name": "func",
+                    "required": false
+                  }
+                }
+              },
+              "required": false,
+              "description": ""
+            }
+          }
+        }
+      ]
+    },
+    {
+      "key": "src/cms/preview-templates/WhitePapersPagePreview.js",
+      "value": [
+        {
+          "description": "",
+          "displayName": "WhitePapersPreview",
+          "methods": [],
+          "actualName": "WhitePapersPreview",
+          "props": {
+            "entry": {
+              "type": {
+                "name": "shape",
+                "value": {
+                  "getIn": {
+                    "name": "func",
+                    "required": false
+                  }
+                }
+              },
+              "required": false,
+              "description": ""
+            }
+          }
+        }
+      ]
+    },
+    {
       "key": "src/pages/contact/index.js",
       "value": [
         {
@@ -827,117 +907,6 @@
             }
           ],
           "actualName": "Index"
-        }
-      ]
-    },
-    {
-      "key": "src/pages/tags/index.js",
-      "value": [
-        {
-          "description": "",
-          "displayName": "TagsPage",
-          "methods": [],
-          "actualName": "TagsPage"
-        }
-      ]
-    },
-    {
-      "key": "src/components/Navbar.js",
-      "value": [
-        {
-          "description": "",
-          "displayName": "Navbar",
-          "methods": [],
-          "actualName": "Navbar"
-        }
-      ]
-    },
-    {
-      "key": "src/templates/home-page.js",
-      "value": [
-        {
-          "description": "",
-          "displayName": "HomePageTemplate",
-          "methods": [],
-          "actualName": "HomePageTemplate",
-          "props": {
-            "title": {
-              "type": {
-                "name": "string"
-              },
-              "required": false,
-              "description": ""
-            },
-            "carousel": {
-              "type": {
-                "name": "shape",
-                "value": {
-                  "showControls": {
-                    "name": "bool",
-                    "required": false
-                  },
-                  "showIndicators": {
-                    "name": "bool",
-                    "required": false
-                  },
-                  "slides": {
-                    "name": "array",
-                    "required": false
-                  }
-                }
-              },
-              "required": false,
-              "description": ""
-            },
-            "products": {
-              "type": {
-                "name": "array"
-              },
-              "required": false,
-              "description": ""
-            },
-            "sections": {
-              "type": {
-                "name": "array"
-              },
-              "required": false,
-              "description": ""
-            },
-            "team": {
-              "type": {
-                "name": "object"
-              },
-              "required": false,
-              "description": ""
-            }
-          }
-        },
-        {
-          "description": "",
-          "displayName": "HomePage",
-          "methods": [],
-          "actualName": "HomePage",
-          "props": {
-            "data": {
-              "type": {
-                "name": "shape",
-                "value": {
-                  "markdownRemark": {
-                    "name": "shape",
-                    "value": {
-                      "frontmatter": {
-                        "name": "object",
-                        "required": false
-                      }
-                    },
-                    "required": false
-                  }
-                }
-              },
-              "required": false,
-              "description": ""
-            }
-          }
         }
       ]
     }

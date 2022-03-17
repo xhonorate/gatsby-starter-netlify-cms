@@ -1,22 +1,30 @@
 import React from "react";
-import {remark} from 'remark'
-import remarkPresetLintMarkdownStyleGuide from 'remark-preset-lint-markdown-style-guide'
-import remarkHtml from 'remark-html'
+import ChakraUIRenderer from 'chakra-ui-markdown-renderer';
+import ReactMarkdown from 'react-markdown';
+import rehypeRaw from 'rehype-raw'
+import { Button } from "@chakra-ui/button";
+import AutoLink from './AutoLink';
 
 const MDRenderer = (props) => {
-    let content = remark()
-        .use(remarkPresetLintMarkdownStyleGuide)
-        .use(remarkHtml, {sanitize: false})
-        .processSync(props.children).toString();
-
-    const CustomTag = `${props.tag || 'div' }`;
-    
-    let newProps = {...props}
-    delete newProps['tag'];
-    delete newProps.children;
+    const customRender = {
+        // Use h2s instead of h1s
+        //h1: 'h2',
+        // Use a chakra component for buttons
+        button: ({node, ...props}) => (
+            <AutoLink to={props.to}>
+                <Button 
+                mt={2}
+                variant={props.variant} 
+                colorScheme={props.colorScheme || props.colorscheme}>
+                    {props.children}
+                </Button>
+            </AutoLink>),
+        
+        ...ChakraUIRenderer()
+    }
 
     return (
-        <CustomTag {...newProps} dangerouslySetInnerHTML={{ __html: content }} />
+        <ReactMarkdown components={customRender} rehypePlugins={[rehypeRaw]} {...props} />
     );
 }
 

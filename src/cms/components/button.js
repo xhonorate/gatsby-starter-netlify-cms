@@ -9,22 +9,27 @@ const ButtonComponent = {
         name: 'color',
         label: 'Color',
         widget: "select",
+        default: 'primary',
         options: ["primary", "secondary", "success", "info", "warning", "danger", "light", "dark"],
       },
       {
-        name: 'outlined',
-        label: 'Outlined',
-        widget: 'boolean'
+        name: 'variant',
+        label: 'Variant',
+        widget: 'select',
+        default: 'solid',
+        options: ["solid", "outline", "ghost", "link"],
       },
       {
         name: 'text',
         label: 'Text',
-        widget: 'string'
+        widget: 'string',
+        default: 'Button'
       },
       {
         name: 'link',
         label: 'Link To',
-        widget: "string"
+        widget: "string",
+        default: "#"
       }
       /*
       {
@@ -45,28 +50,19 @@ const ButtonComponent = {
     //
     // Additionally, it's recommended that you use non-greedy capturing groups (e.g.
     // `(.*?)` vs `(.*)`), especially if matching against newline characters.
-    pattern: /^\s*?<a\s*?role='button' class='ripple ripple-surface btn btn((-outline)*.?)-(.*?)' href='(.*?)'>\s*?(.*?)\s*?<\/a>/ms,
+    pattern: /^\s*?<Button\s*?variant='(.*?)' colorScheme='(.*?)' to='(.*?)'>(.*?)<\/Button>/ms,
     // Given a RegExp Match object
     // (https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/match#return_value),
     // return an object with one property for each field defined in `fields`.
     //
     // This is used to populate the custom widget in the markdown editor in the CMS.
     fromBlock: function(match) {
-        if (match[2] == '-outline') {
-            return {
-                color: match[3],
-                outlined: true,
-                text: match[5],
-                link: match[4],
-            }
-        } else {
-            return {
-                color: match[3],
-                outlined: false,
-                text: match[5],
-                link: match[4],
-            }
-        };
+        return {
+            variant: match[1],
+            color: match[2],
+            link: match[3],
+            text: match[4],
+        }
     },
     // Given an object with one property for each field defined in `fields`,
     // return the string you wish to be inserted into your markdown.
@@ -75,7 +71,7 @@ const ButtonComponent = {
     // markdown document
     toBlock: function(data) {
       return `
-  <a role='button' class='ripple ripple-surface btn btn-${data.outlined ? 'outline-' : ''}${data.color}' href='${data.link}'>${data.text}</a>
+  <Button variant='${data.variant}' colorScheme='${data.color}' to='${data.link}'>${data.text}</Button>
   `;
     },
     // Preview output for this component. Can either be a string or a React component

@@ -1,11 +1,11 @@
 import * as React from "react";
 import { Helmet } from "react-helmet";
 import Footer from "../components/Footer";
-import Navbar from "../components/Navbar";
-import ThemeStyle from "./ThemeStyle";
 import '../style/main.scss';
 import useSiteMetadata from "./SiteMetadata";
 import { withPrefix } from "gatsby";
+import ThemeWrapper from './ThemeWrapper';
+import Navbar from './Navbar.tsx';
 
 const TemplateWrapper = ({ children }) => {
   const { title, description } = useSiteMetadata();
@@ -57,9 +57,10 @@ const TemplateWrapper = ({ children }) => {
           content={`${withPrefix("/")}img/og-image.jpg`}
         />
       </Helmet>
-      <ThemeStyle />
+      <ThemeWrapper>
       <Navbar />
-      <div>{children}</div>
+        {children}
+      </ThemeWrapper>
       <Footer />
     </div>
   );

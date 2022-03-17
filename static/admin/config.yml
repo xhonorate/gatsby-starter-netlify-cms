@@ -13,6 +13,20 @@ Defaults:
       { label: "Cursor Seek Vertical", value: "cursorSeekVertical" },
       { label: "Cursor Seek Horizontal", value: "cursorSeekHorizontal" }
     ]
+  - &graphicPositions
+    {
+      options: [
+        "above heading",
+        "above content",
+        "left",
+        "right",
+        "top left",
+        "top right",
+        "bottom left",
+        "bottom right",
+        "below content",
+      ]
+    }
   - &graphic
     {
       label: graphic,
@@ -26,7 +40,7 @@ Defaults:
             name: image-object, 
             widget: object, 
             fields: [
-              { label: Position, name: position, widget: select, options: ["left", "right", "above", "below"], default: "above"},
+              { label: Position, name: position, widget: select, <<: *graphicPositions, default: "above heading"},
               { label: Image, name: image, widget: image }
             ]
           },
@@ -35,7 +49,7 @@ Defaults:
             name: animation-object, 
             widget: object, 
             fields: [
-              { label: Position, name: position, widget: select, options: ["left", "right", "above", "below"], default: "above"},
+              { label: Position, name: position, widget: select, <<: *graphicPositions, default: "above heading"},
               { label: Lottie URL, name: lottie, widget: string },
               { label: Autoplay, name: autoplay, widget: boolean, default: true },
               { label: Loop, name: loop, widget: boolean, default: true },
@@ -54,14 +68,13 @@ Defaults:
       summary: '{{fields.heading}}',
       fields:
         [
-          { label: Text Alignment, name: align, widget: select, options: ["start", "center", "end"], default: "center"},
+          { label: Text Alignment, name: align, widget: select, options: ["start", "center", "end"], default: "start"},
           { label: Heading, name: heading, widget: string },
           { label: SubHeading, name: subheading, widget: string, required: false },
           { label: Content, name: content, widget: markdown, editor_components: ['button', 'icon-box'] },
           { <<: *graphic }
         ]
     }
-      
 
 backend:
   name: git-gateway

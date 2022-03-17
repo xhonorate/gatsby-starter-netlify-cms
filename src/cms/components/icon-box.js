@@ -59,11 +59,7 @@ const IconBoxComponent = {
     // This is used to serialize the data from the custom widget to the
     // markdown document
     toBlock: function(data) {
-      return `<div class='col icon-box'>
-      <i class='${data.icon.split(' ')[0]} fa-${data.icon.split(' ')[1]}'></i>
-      <h4>${data.heading}</h4>
-      <p>${data.text}</p>
-      </div>`;
+      return `<div class='col icon-box'><i class='${data.icon.split(' ')[0]} fa-${data.icon.split(' ')[1]}'></i><h4>${data.heading}</h4><p>${data.text}</p></div>`;
     },
     // Preview output for this component. Can either be a string or a React component
     // (component gives better render performance)

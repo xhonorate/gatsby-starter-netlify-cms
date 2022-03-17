@@ -1,8 +1,6 @@
 ---
 templateKey: white-paper
 subheading: True Next Generation Networking
-featuredimage: /img/background1dark.png
-featuredpost: true
 title: The WhiteStar Network
 selectedCategories:
   - Networking
@@ -38,17 +36,14 @@ sections:
       systems, and addresses potential human error where a developer may not be
       a subject matter expert in any one particular area.  This frees up vital
       human resources to concentrate on the application layer, saving valuable
-      time and introducing an efficiency unavailable on other platforms.\
+      time and introducing an efficiency unavailable on other platforms.
 
-      \
 
-      For example, one powerful benefit of the inherent features of the WhiteStar Network center around identity management.  The current state of the art requires developers who want to manage user’s identities - and any personal identifiable information associated with their identities - in very particular ways to protect user privacy.  However, given the inherent complexity and difficulty in device and application layer identity management, databasing and storage of PID, many developers who lack the skill, time, or are unwilling to properly manage user data leave vulnerabilities open in their applications.  Likewise, centralized repositories of private user information, for example information stored in the Cloud, are juicy targets for would-be hackers seeking to compromise users’ privacy and steal personal information.  This has serious implications when the targets hold immutable personal information like social security numbers, government identification, biometric data, among others, let alone information that could be financially damaging like bank account information, passwords, credit and debit numbers or private keys for cryptocurrencies.\
+      For example, one powerful benefit of the inherent features of the WhiteStar Network center around identity management.  The current state of the art requires developers who want to manage user’s identities - and any personal identifiable information associated with their identities - in very particular ways to protect user privacy.  However, given the inherent complexity and difficulty in device and application layer identity management, databasing and storage of PID, many developers who lack the skill, time, or are unwilling to properly manage user data leave vulnerabilities open in their applications.  Likewise, centralized repositories of private user information, for example information stored in the Cloud, are juicy targets for would-be hackers seeking to compromise users’ privacy and steal personal information.  This has serious implications when the targets hold immutable personal information like social security numbers, government identification, biometric data, among others, let alone information that could be financially damaging like bank account information, passwords, credit and debit numbers or private keys for cryptocurrencies.
 
-      \
 
-      However, by moving the burden of securing this kind of information out of the application and into the network, it efficiently eases the developmental overhead associated with properly securing private user data.  WhiteStar is capable of intelligently securing user data at the end-device level, assured via a deceptively simple series of network semantics, artificial intelligence and cryptography that ensure user data is stored not only within the standards for best practice in user privacy protection, but also adapts to potential security threats as they emerge.  Likewise, WhiteStar’s advanced feature set is fully capable of alerting users and developers to any potential security threats, to allow them to adapt to the changing environment and mitigate network risk before it becomes a problem.  Once a “Bad Actor” is identified, the WhiteStar Network also ensures that actor can no longer interact with users’ applications, further fortifying the Network and its attendant applications against external hostile action.\
+      However, by moving the burden of securing this kind of information out of the application and into the network, it efficiently eases the developmental overhead associated with properly securing private user data.  WhiteStar is capable of intelligently securing user data at the end-device level, assured via a deceptively simple series of network semantics, artificial intelligence and cryptography that ensure user data is stored not only within the standards for best practice in user privacy protection, but also adapts to potential security threats as they emerge.  Likewise, WhiteStar’s advanced feature set is fully capable of alerting users and developers to any potential security threats, to allow them to adapt to the changing environment and mitigate network risk before it becomes a problem.  Once a “Bad Actor” is identified, the WhiteStar Network also ensures that actor can no longer interact with users’ applications, further fortifying the Network and its attendant applications against external hostile action.
 
-      \
 
       Because the burden of security is shifted to the Network, all of these benefits are baked in to any application deployed on WhiteStar, allowing developers to concentrate on building great applications without having to worry about securing the network back end.  This illustrates the power of a properly architected platform that can appropriately underpin the next generation of application development.
     graphic: []

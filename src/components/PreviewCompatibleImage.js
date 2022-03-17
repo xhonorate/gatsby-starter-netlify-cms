@@ -23,7 +23,9 @@ const PreviewCompatibleImage = ({ imageInfo }) => {
     );
     // for SVGs, etc.
   } else if (!!image.publicURL) {
-    return <img src={image.publicURL} alt={alt} {...options}/>;
+    const imgOptions = {...options};
+    delete imgOptions['objectFit'];
+    return <img src={image.publicURL} alt={alt} {...imgOptions}/>;
   } else if (image) {
     // for Netlify CMS
     return <img src={image} alt={alt} style={{maxWidth: "100%", height: 'max-content', margin: 'auto'}} {...options}/>;

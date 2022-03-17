@@ -1,4 +1,4 @@
-import React from "react";
+/*import React from "react";
 import { graphql, StaticQuery } from "gatsby";
 import {
   MDBContainer,
@@ -68,7 +68,7 @@ const NavbarTemplate = class extends React.Component {
   render() {
     return (
       <MDBNavbar style={{transition: 'opacity 0.65s ease', opacity: (this.state.scrolled ? 0.9 : 1)}} sticky expand='lg' light color="blue" bgColor='light'>
-      <MDBContainer /*fluid*/>
+      <MDBContainer /*fluid>
         <GMDBNavbarBrand to='/'>
             <StaticImage
               src="../img/Whitestar/Logo_Simple.png"
@@ -107,7 +107,7 @@ const NavbarTemplate = class extends React.Component {
                 </MDBDropdownToggle>
                 <MDBDropdownMenu>
                 {this.props.products.map((product, index) => (
-                    <MDBDropdownItem>
+                    <MDBDropdownItem key={`product-nav-${index}`}>
                       <GMDBDropdownLink href={`/#product-${index}`} className="nav-link">{product.heading}</GMDBDropdownLink>
                     </MDBDropdownItem>
                 ))}
@@ -201,4 +201,4 @@ export default function Navbar() {
       render={(data) => <NavbarTemplate products={data.markdownRemark.frontmatter.products} />}
     />
   );
-}
+}*/

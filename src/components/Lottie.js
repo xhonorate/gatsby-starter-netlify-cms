@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes, { arrayOf } from 'prop-types'
+import PropTypes, { array, arrayOf } from 'prop-types'
 import '@lottiefiles/lottie-player';
 import { create } from '@lottiefiles/lottie-interactivity';
 
@@ -155,7 +155,7 @@ Lottie.propTypes = {
     loop: PropTypes.bool,
     controls: PropTypes.bool,
     interactive: PropTypes.string,
-    frames: PropTypes.oneOfType(arrayOf(PropTypes.number), PropTypes.number),
+    frames: PropTypes.oneOfType([arrayOf(PropTypes.number), PropTypes.number]),
     mode: PropTypes.string,
     actions: PropTypes.arrayOf(PropTypes.object)
 }
