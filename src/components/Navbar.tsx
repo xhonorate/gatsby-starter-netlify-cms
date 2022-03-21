@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { StaticImage } from "gatsby-plugin-image";
 import { graphql, StaticQuery } from 'gatsby'
 import AutoLink from "./AutoLink";
@@ -26,9 +26,18 @@ import {
   ChevronDownIcon,
   ChevronRightIcon,
 } from '@chakra-ui/icons';
+import ContactForm from "./ContactForm";
 
 export default function Navbar() {
   const { isOpen, onToggle } = useDisclosure();
+  const [ contactOpen, setContactOpen ] = useState(false);
+
+  const openContactForm = () => setContactOpen(true);
+
+  let isBrowser = () => typeof window !== "undefined";
+  if (isBrowser && window.location.hash == "#contactForm" && !contactOpen) {
+      setContactOpen(true);
+  }
 
   return (
     <StaticQuery
@@ -116,12 +125,13 @@ export default function Navbar() {
           },
           {
             label: 'Contact Us',
-            href: '/#contact',
+            onclick: openContactForm,
           },
         ];
 
         return(
         <Box>
+          <ContactForm open={contactOpen} />
           <Flex
             bg={useColorModeValue('white', 'gray.800')}
             color={useColorModeValue('gray.600', 'white')}
@@ -230,6 +240,7 @@ const DesktopNav = (NAV_ITEMS: Array<NavItem>) => {
                 _focus={{boxShadow:'none'}}
                 p={2}
                 href={navItem.href ?? '#'}
+                onClick={navItem.onclick}
                 fontSize={15}
                 fontWeight={500}
                 fontFamily={'heading'}
@@ -354,7 +365,7 @@ const MobileNav = (NAV_ITEMS: Array<NavItem>) => {
   );
 };
 
-const MobileNavItem = ({ label, children, href }: NavItem) => {
+const MobileNavItem = ({ label, children, href, onclick }: NavItem) => {
   const { isOpen, onToggle } = useDisclosure();
 
   return (
@@ -362,6 +373,7 @@ const MobileNavItem = ({ label, children, href }: NavItem) => {
       <Flex
         py={2}
         as={Link}
+        onClick={onclick}
         href={children ? null : (href ?? '#')}
         justify={'space-between'}
         align={'center'}
@@ -463,4 +475,5 @@ interface NavItem {
   subLabel?: string;
   children?: Array<NavItem>;
   href?: string;
+  onclick?: any;
 }

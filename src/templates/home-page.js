@@ -7,7 +7,6 @@ import HeroCarousel from "../components/HeroCarousel";
 import PreviewCompatibleImage from "../components/PreviewCompatibleImage";
 import MDRenderer from '../components/MDRenderer';
 import Slider from '../components/Slick';
-import Contact from '../components/Contact';
 import Section from '../components/Section';
 import { Heading } from "@chakra-ui/layout";
 
@@ -15,15 +14,6 @@ import { Heading } from "@chakra-ui/layout";
 export class HomePageTemplate extends React.Component {
     constructor (props) {
         super(props);
-
-        this.state = { showContact: false };
-    }
-
-    componentDidMount () {
-      let isBrowser = () => typeof window !== "undefined";
-      if (isBrowser && window.location.hash == "#contact" && !this.state.showContact) { 
-        this.setState({showContact: true})
-      }
     }
 
     render () {
@@ -36,7 +26,7 @@ export class HomePageTemplate extends React.Component {
       } = this.props;
       return (
           <main>
-              <HeroCarousel showIndicators={carousel.showIndicators} showControls={carousel.showControls} slides={carousel.slides}/>
+            <HeroCarousel showIndicators={carousel.showIndicators} showControls={carousel.showControls} slides={carousel.slides}/>
               <MDBScrollspySection className="products">
                 <MDBContainer>
                   <MDBRow>
@@ -132,8 +122,6 @@ export class HomePageTemplate extends React.Component {
                     </Slider>
                   </MDBContainer>
               </MDBScrollspySection>
-
-              <Contact open={this.state.showContact} />
           </main>
       );
     };

@@ -44,7 +44,7 @@ products:
       can focus on building awesome applications.
 
 
-        <Button variant='solid' colorScheme='primary' to='/#contact'>Request a Demo</Button>
+        <Button variant='solid' colorScheme='primary' to='#contactForm'>Request a Demo</Button>
 sections:
   - align: start
     heading: Who is WhiteStar Communications?
