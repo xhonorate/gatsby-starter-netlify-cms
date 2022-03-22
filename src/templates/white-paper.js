@@ -1,25 +1,25 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-import { graphql, useStaticQuery } from "gatsby";
-import { MDBContainer, MDBRow, MDBCol, MDBScrollspySection, MDBBtn } from "mdb-react-ui-kit";
+import { graphql } from "gatsby";
 import Layout from "../components/Layout";
-import HeroCarousel from "../components/HeroCarousel";
-import PreviewCompatibleImage from "../components/PreviewCompatibleImage";
-import MDRenderer from '../components/MDRenderer';
-import Lottie from '../components/Lottie';
 import Slider from '../components/Slick';
 import Section from '../components/Section';
 import Hero from '../components/Hero';
+import useWhitePaperData from '../components/WhitePaperQuery';
+import WhitePaperCard from "../components/WhitePaperCard";
+import { Box, Heading, VStack, Text } from '@chakra-ui/react';
+import RelatedPapers from "../components/RelatedPapers";
 
 // eslint-disable-next-line
-export const WhitePaperTemplate = ({
+export const WhitePaperTemplate = (
+  {
     title,
     subheading,
     anim,
-    categories,
     sections,
     relatedPapers = [],
   }) => {
+    
     return (
         <div>
             <Hero heading={title} subheading={subheading} lottie={anim} />
@@ -30,6 +30,7 @@ export const WhitePaperTemplate = ({
                 </div>
                 ))}
             </main>
+            {relatedPapers && relatedPapers.length > 0 && <RelatedPapers relatedPapers={relatedPapers} />}
         </div>
     );
   };
@@ -38,7 +39,6 @@ export const WhitePaperTemplate = ({
     title: PropTypes.string,
     subheading: PropTypes.string,
     anim: PropTypes.string,
-    categories: PropTypes.array,
     sections: PropTypes.array,
     relatedPapers: PropTypes.array,
   };

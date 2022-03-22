@@ -47,4 +47,6 @@ sections:
         controls: false
         interactive: none
         lottie: https://assets3.lottiefiles.com/packages/lf20_itruvlwi.json
+relatedPapers:
+  - networking/the-whitestar-network
 ---

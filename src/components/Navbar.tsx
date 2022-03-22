@@ -34,11 +34,6 @@ export default function Navbar() {
 
   const openContactForm = () => setContactOpen(true);
 
-  let isBrowser = () => typeof window !== "undefined";
-  if (isBrowser && window.location.hash == "#contactForm" && !contactOpen) {
-      setContactOpen(true);
-  }
-
   return (
     <StaticQuery
       query={graphql`

@@ -50,6 +50,11 @@ import {
 
     componentDidMount() {
         this.toggleShow = this.toggleShow.bind(this);
+
+        let isBrowser = () => typeof window !== "undefined";
+        if (isBrowser && window.location.hash == "#contactForm" && !this.state.open) {
+            this.setState({open: true});
+        }
     }
 
     componentWillReceiveProps(props) {

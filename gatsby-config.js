@@ -9,12 +9,6 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-typescript',
       options: {
-        transpileOnly: true, // default
-        compilerOptions: {
-          target: 'es6',
-          experimentalDecorators: true,
-          jsx: 'react'
-        }
       },
     },
     {
@@ -96,13 +90,8 @@ module.exports = {
         resetCSS: false,
         isUsingColorMode: true,
       },
-    },/*
-    {
-      resolve: `gatsby-theme-docz`,
-      options: {
-        basePath: `/docs`,
-      },
     },
+    /*
     {
       resolve: "gatsby-plugin-purgecss", // purges all unused/unreferenced css rules
       options: {

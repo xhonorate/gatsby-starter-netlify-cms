@@ -12,6 +12,7 @@ const WhitePapersPreview = ({ entry }) => {
       subheading={data.subheading || {}}
       title={data.title || {}}
       body={data.body || {}}
+      categories={data.cateogories}
     />
     );
   } else {

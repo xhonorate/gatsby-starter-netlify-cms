@@ -12,10 +12,10 @@ const MagicGrid = (props) => {
         graphic,
         heading,
         subheading,
-        content,        
+        content = "",        
     } = props;
 
-    const paragraphs = (content.replaceAll("\\\n","\n").split("\n")).filter(paragraph => { return paragraph.replaceAll("\\","").length > 0 });
+    const paragraphs = (content.replaceAll("\\\n","\n").replaceAll("\n<Tooltip","<Tooltip").replaceAll("</Tooltip>\n","</Tooltip>").split("\n\n")).filter(paragraph => { return paragraph.replaceAll("\\","").length > 0 });
     const pos = (graphic && graphic.length > 0) ? graphic[0].position : "none";
 
     const left = pos.includes("left");
@@ -50,7 +50,7 @@ const MagicGrid = (props) => {
                     image: graphic[0].image,
                     alt: "section-image",
                     options: {
-                        style: { maxWidth: "100%" },
+                        style: { maxWidth: "100%", maxHeight: "500px" },
                         objectFit: "contain",
                         placeholder: "blurred",
                     }
@@ -62,9 +62,9 @@ const MagicGrid = (props) => {
         )
     }
 
-    const gridItem = (content, colSpan=12) => {
+    const gridItem = (content, colSpan=12, colStart=0) => {
         return (
-            <GridItem colSpan={colSpan} key={`griditem-${gridItems.length}`}>
+            <GridItem colStart={colStart} colSpan={colSpan} key={`griditem-${gridItems.length}`}>
                 <MDRenderer>{content}</MDRenderer>
             </GridItem>
         )
@@ -101,7 +101,7 @@ const MagicGrid = (props) => {
     // loop through each "paragraph" element from markdown
     for (let i = 0; i < paragraphs.length; i++) {
         const j = bottom ? paragraphs.length - 1 - i : i
-        let size = 12;
+        let size = 10;
         if (left || right) {
             if (top || bottom) {
                 size = { base: 12, md: i > paragraphBreakpoints.md ? 12 : 7, lg: i > paragraphBreakpoints.lg ? 12 : 7 }
@@ -112,10 +112,10 @@ const MagicGrid = (props) => {
         }
 
         if (bottom) {
-            gridItems.splice(1,0,gridItem(paragraphs[j], size));
+            gridItems.splice(1,0,gridItem(paragraphs[j], size, 2));
 
         } else {
-            gridItems.push(gridItem(paragraphs[j], size));
+            gridItems.push(gridItem(paragraphs[j], size, 2));
         }
     }
 
@@ -141,7 +141,6 @@ const MagicGrid = (props) => {
             md: getRowStart('md'),
             lg: getRowStart('lg'),
         };
-
 
         const colSpan = {base: 12, md: left || right ? 5 : 12}
         const colStart = {base: 0, md: right ? 8 : 0}

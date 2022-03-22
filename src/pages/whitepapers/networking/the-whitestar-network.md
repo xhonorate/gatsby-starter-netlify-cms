@@ -1,10 +1,10 @@
 ---
 templateKey: white-paper
-subheading: True Next Generation Networking
 title: The WhiteStar Network
+subheading: True Next Generation Networking
 selectedCategories:
   - Networking
-icon: fas apple-whole
+icon: fas sitemap
 sections:
   - align: start
     heading: The WhiteStar Network
@@ -47,4 +47,7 @@ sections:
 
       Because the burden of security is shifted to the Network, all of these benefits are baked in to any application deployed on WhiteStar, allowing developers to concentrate on building great applications without having to worry about securing the network back end.  This illustrates the power of a properly architected platform that can appropriately underpin the next generation of application development.
     graphic: []
+relatedPapers:
+  - security/supply-chain
+  - security/whitestar-culture
 ---

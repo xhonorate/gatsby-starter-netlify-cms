@@ -10,6 +10,7 @@ import IconBoxComponent from './components/icon-box';
 import WhitePapersPreview from './preview-templates/WhitePapersPagePreview'
 import AnnouncementPagePreview from './preview-templates/AnnouncementPagePreview';
 import WhitePaperPagePreview from './preview-templates/WhitePaperPagePreview';
+import TooltipComponent from './components/tooltip';
 
 CMS.registerMediaLibrary(uploadcare)
 CMS.registerMediaLibrary(cloudinary)
@@ -34,6 +35,7 @@ CMS.registerWidget(
 
 CMS.registerEditorComponent(ButtonComponent);
 CMS.registerEditorComponent(IconBoxComponent);
+CMS.registerEditorComponent(TooltipComponent);
 
 CMS.registerPreviewTemplate('home', HomePagePreview)
 CMS.registerPreviewTemplate('about', AboutPagePreview)

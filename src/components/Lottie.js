@@ -24,7 +24,7 @@ class Lottie extends React.Component {
 			{
 				visibility:[0.35, 0.65],
 				type: "seek",
-				frames: [0, 100]
+				frames: [0, 897]
 			},
 			]
 		},
@@ -114,8 +114,7 @@ class Lottie extends React.Component {
     }
 
     //strip the id from the file name if it is not given
-    this.id = (this.props.id ? this.props.id : this.props.src.match(/(.*).json/)[1] );
-    if (this.id.match(/(.*)\/(.*)/)) { this.id = this.id.match(/(.*)\/(.*)/)[2] };
+    this.id = this.props.id;
     //if (this.interactive) { this.interactive.player = "#" + this.id };
 
     this.state = { lottie: null };

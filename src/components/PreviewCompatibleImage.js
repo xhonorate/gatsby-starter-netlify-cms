@@ -22,7 +22,7 @@ const PreviewCompatibleImage = ({ imageInfo }) => {
       />
     );
     // for SVGs, etc.
-  } else if (!!image.publicURL) {
+  } else if (image && !!image.publicURL) {
     const imgOptions = {...options};
     delete imgOptions['objectFit'];
     return <img src={image.publicURL} alt={alt} {...imgOptions}/>;

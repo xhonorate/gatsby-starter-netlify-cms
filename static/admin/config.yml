@@ -71,7 +71,7 @@ Defaults:
           { label: Text Alignment, name: align, widget: select, options: ["start", "center", "end"], default: "start"},
           { label: Heading, name: heading, widget: string },
           { label: SubHeading, name: subheading, widget: string, required: false },
-          { label: Content, name: content, widget: markdown, editor_components: ['button', 'icon-box'] },
+          { label: Content, name: content, widget: markdown, editor_components: ['button', 'icon-box', 'tooltip'] },
           { <<: *graphic }
         ]
     }
@@ -86,7 +86,7 @@ backend:
     uploadMedia: "[skip ci] Upload “{{path}}”"
     deleteMedia: "[skip ci] Delete “{{path}}”"
 
-local_backend: false
+local_backend: true
 media_folder: static/img
 public_folder: /img
 
@@ -190,7 +190,7 @@ collections:
           - { label: "Image", name: "image", widget: "image" }
           - { label: "File", name: "file", widget: "file", required: false }
 
-      - file: "src/pages/whitepapers/index.md"
+      - file: "src/pages/whitepapers.md"
         label: "White Papers"
         name: "whitepapers-index"
         fields:
@@ -219,7 +219,9 @@ collections:
   - name: "whitepapers"
     label: "White Papers"
     label_singular: "White Paper"
-    folder: "src/pages/whitepapers/papers"
+    folder: "src/pages/whitepapers/"
+    path: "{{fields.selectedCategories[0]}}/{{slug}}"
+    slug: "{{fields.selectedCategories[0]}}/{{slug}}"
     create: true
     fields:
       - {
@@ -250,8 +252,9 @@ collections:
           multiple: true,
           required: false,
           collection: "whitepapers",
-          value_field: "title", 
-          search_fields: ["title"]
+          value_field: "{{slug}}", 
+          search_fields: ["title"],
+          display_fields: ["title"]
         }
 
   - name: "docs"

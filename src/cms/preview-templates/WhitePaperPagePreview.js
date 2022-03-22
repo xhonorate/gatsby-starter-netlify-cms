@@ -10,10 +10,9 @@ const WhitePaperPagePreview = ({ entry }) => {
     <WhitePaperTemplate
       title={data.title}
       subheading={data.subheading}
-      anim={""}
-      categories={data.selectedCategories || {}}
+      anim={''}
       sections={data.sections || {}}
-      relatedPapers={data.relatedPapers || {}}
+      relatedPapers={[]}
     />
     );
   } else {
