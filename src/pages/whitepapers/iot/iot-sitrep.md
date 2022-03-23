@@ -121,4 +121,10 @@ sections:
       \
 
       WhiteStar’s overlay network is compatible with any wired or wireless network, meaning WhiteStar enabled IoT devices are appropriate in places where other devices may not work making installation straight forward. That said, there will always be a demand for professional installation, especially coupled with monitoring or more complex smart home systems.
+relatedPapers:
+  - iot/business-of-iot
+  - security/cryptography
+  - iot/iot-cars
+  - security/security-architecture
+  - security/intellectual-property
 ---

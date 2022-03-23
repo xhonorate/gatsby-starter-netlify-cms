@@ -82,4 +82,10 @@ sections:
         controls: false
         interactive: none
         lottie: https://assets7.lottiefiles.com/packages/lf20_gktj7rsr.json
+relatedPapers:
+  - iot/iot-sitrep
+  - networking/the-whitestar-network
+  - iot/business-of-iot
+  - security/security-first
+  - security/whitestar-culture
 ---

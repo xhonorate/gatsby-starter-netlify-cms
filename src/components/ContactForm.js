@@ -156,7 +156,7 @@ import {
                 <WrapItem justifyContent={'center'} w={{base:'400px', md:'360px'}}>
                   <Box align={'end'} bg="white" borderRadius="lg">
                     <Box m={8} color="#0B0E3F">
-                    <form name="contactForm" method="POST" data-netlify="true" data-netlify-recaptcha="true">
+                    <form name="contactForm" method="post" data-netlify="true" data-netlify-recaptcha="true">
                     <input type="hidden" name="form-name" value="contactForm" />
                       <VStack spacing={5}>
                         <FormControl id="name">

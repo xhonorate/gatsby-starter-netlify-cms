@@ -65,7 +65,7 @@ sections:
     graphic:
       - type: image-object
         position: left
-        image: group-18.png
+        image: /img/group-18.png
   - align: start
     heading: Instant Secure File Transfer
     content: >-
@@ -81,7 +81,7 @@ sections:
     graphic:
       - type: image-object
         position: right
-        image: stardrop_graphic.png
+        image: /img/stardrop_graphic.png
   - align: start
     heading: Private and Public Communities
     content: Another standout feature of Society is the Social Community, which can
@@ -100,7 +100,7 @@ sections:
     graphic:
       - type: image-object
         position: left
-        image: communities.png
+        image: /img/communities.png
   - align: start
     heading: Secure Private Chat
     content: >-
@@ -126,5 +126,11 @@ sections:
     graphic:
       - type: image-object
         position: right
-        image: messaging.png
+        image: /img/messaging.png
+relatedPapers:
+  - networking/compliance-networking
+  - security/security-architecture
+  - security/cryptography
+  - security/system-surface-area
+  - networking/the-whitestar-network
 ---

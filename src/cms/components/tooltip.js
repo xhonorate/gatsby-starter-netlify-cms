@@ -3,6 +3,7 @@ const TooltipComponent = {
     id: "tooltip",
     // Visible label
     label: "Tooltip",
+    summary: "{{text}}",
     // Fields the user need to fill out when adding an instance of the component
     fields: [
       {

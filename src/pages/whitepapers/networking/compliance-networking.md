@@ -222,4 +222,10 @@ sections:
 
 
       The WhiteStar Network is a proven solution, employing patented technologies to provide a revolutionary solution to organization’s most vexing problems for securing client data and maintaining regulatory compliance for years to come.
+relatedPapers:
+  - education/society-in-the-classroom
+  - iot/iot-sitrep
+  - networking/the-whitestar-network
+  - security/security-architecture
+  - security/security-first
 ---

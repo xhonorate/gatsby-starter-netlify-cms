@@ -4,7 +4,8 @@ import PropTypes from "prop-types"
 import Lottie from './Lottie';
 import PreviewCompatibleImage from './PreviewCompatibleImage';
 import MDRenderer from './MDRenderer';
-import { Grid, GridItem, Center, Container, VStack, Heading } from "@chakra-ui/react";
+import { Grid, GridItem, Center, Container, VStack, Heading, Box } from "@chakra-ui/react";
+import { StaticImage } from 'gatsby-plugin-image';
 
 const MagicGrid = (props) => {
     const {
@@ -23,14 +24,37 @@ const MagicGrid = (props) => {
     const top = pos.includes("top"); 
     const bottom = pos.includes("bottom");
 
+    const gridItems = []
+    const paragraphHeights = [];
+    const paragraphBreakpoints = {md: 0, lg: 0}
+
     const graphicHeight = {md: 300, lg: 460};
 
-    const centered = (pos.includes("above") || pos.includes("below"));
+    const lengthToHeight = (strlen) => {
+        // xxl (1160px+) ~ 80-85 per line
+        // does not matter for smaller sizes, since we will wrap image to top/bottom of text
+        const charsPerLine = 74
+        const bottomMargin = 8
+        const spaceBetween = 8
+        const heightPerLine = 25.59
+
+        return (Math.ceil(strlen/charsPerLine))*heightPerLine + bottomMargin + spaceBetween;
+    }
+
+    for (let i = 0; i < paragraphs.length; i++) {
+        // loop backwards for bottom aligned graphic
+        const j = bottom ? paragraphs.length - 1 - i : i
+        paragraphHeights.push(lengthToHeight(paragraphs[j].length));
+
+        let currentLen = paragraphHeights.reduce((a, b) => a + b, 0)
+        if (currentLen > graphicHeight.md && paragraphBreakpoints.md == 0) paragraphBreakpoints.md = i;
+        if (currentLen > graphicHeight.lg && paragraphBreakpoints.lg == 0) paragraphBreakpoints.lg = i;
+    }
 
     const headingItem = (
-        <GridItem colSpan={12} key="heading-item">
-            <VStack className={`text-${align} section-title`}>
-                <Heading as='h2' align={centered ? "center" : ""}>{heading}</Heading>
+        <GridItem colSpan={left || right ? {base:12, md:7} : 12} colStart={left ? {base:1, md:6} : 1} key="heading-item">
+            <VStack align={left || right ? "start" : "center"} pb={left || right ? 3 : 8} className={`text-${align} section-title`}>
+                <Heading as='h2'>{heading}</Heading>
                 {subheading && <p className="pb-4"><em>{subheading}</em></p>}
             </VStack>
         </GridItem>
@@ -44,13 +68,16 @@ const MagicGrid = (props) => {
                 rowStart={rowStart}
                 rowSpan={rowSpan}
                 colSpan={colSpan}>
-            <Center h='100%' className="p-3">
+            <Center h='100%' p={3} mt={((left || right) && (!top && !bottom)) ? - 8 : 0}>
                 { graphic[0].type == "image-object" ?
                 <PreviewCompatibleImage imageInfo={{  
                     image: graphic[0].image,
                     alt: "section-image",
                     options: {
-                        style: { maxWidth: "100%", maxHeight: "500px" },
+                        style: { 
+                            maxWidth: "100%", 
+                            maxHeight: Math.min(460, paragraphHeights.reduce((a, b) => a + b, 0) - 28) 
+                        },
                         objectFit: "contain",
                         placeholder: "blurred",
                     }
@@ -68,31 +95,6 @@ const MagicGrid = (props) => {
                 <MDRenderer>{content}</MDRenderer>
             </GridItem>
         )
-    }
-
-    const lengthToHeight = (strlen) => {
-        // xxl (1160px+) ~ 80-85 per line
-        // does not matter for smaller sizes, since we will wrap image to top/bottom of text
-        const charsPerLine = 74
-        const bottomMargin = 8
-        const spaceBetween = 8
-        const heightPerLine = 25.59
-
-        return (Math.ceil(strlen/charsPerLine))*heightPerLine + bottomMargin + spaceBetween;
-    }
-
-    const gridItems = []
-    const paragraphHeights = [];
-    const paragraphBreakpoints = {md: 0, lg: 0}
-
-    for (let i = 0; i < paragraphs.length; i++) {
-        // loop backwards for bottom aligned graphic
-        const j = bottom ? paragraphs.length - 1 - i : i
-        paragraphHeights.push(lengthToHeight(paragraphs[j].length));
-
-        let currentLen = paragraphHeights.reduce((a, b) => a + b, 0)
-        if (currentLen > graphicHeight.md && paragraphBreakpoints.md == 0) paragraphBreakpoints.md = i;
-        if (currentLen > graphicHeight.lg && paragraphBreakpoints.lg == 0) paragraphBreakpoints.lg = i;
     }
 
     // place heading item
@@ -162,15 +164,17 @@ export default function Section(props) {
     const {
       id = ""
     } = props;
+
+    console.log(props.heading);
     
     return (
-        <section id={id} >
+        <Box as='section' id={id} bg={(props.heading == "WhiteStar Patents") ? 'gray.100' : 'none' } >
             <Container maxW={'6xl'} py={6}>
                 <VStack spacing={2} align='stretch'>
                     <MagicGrid {...props}/>
                 </VStack>
             </Container>
-        </section>
+        </Box>
     )
 }
 

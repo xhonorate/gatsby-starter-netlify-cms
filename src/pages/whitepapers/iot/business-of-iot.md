@@ -97,4 +97,10 @@ sections:
         controls: false
         interactive: none
         lottie: https://assets6.lottiefiles.com/packages/lf20_17yk29hr.json
+relatedPapers:
+  - iot/iot-sitrep
+  - iot/iot-cars
+  - networking/the-whitestar-network
+  - security/security-first
+  - security/security-architecture
 ---

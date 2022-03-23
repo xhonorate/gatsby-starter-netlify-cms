@@ -49,4 +49,8 @@ sections:
         lottie: https://assets3.lottiefiles.com/packages/lf20_itruvlwi.json
 relatedPapers:
   - networking/the-whitestar-network
+  - security/security-first
+  - security/cryptography
+  - iot/iot-sitrep
+  - security/whitestar-culture
 ---

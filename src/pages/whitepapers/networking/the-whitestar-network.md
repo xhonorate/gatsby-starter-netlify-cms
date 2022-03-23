@@ -50,4 +50,7 @@ sections:
 relatedPapers:
   - security/supply-chain
   - security/whitestar-culture
+  - security/security-first
+  - security/security-architecture
+  - networking/whitestar-vs-blockchain
 ---

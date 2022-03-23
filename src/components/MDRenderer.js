@@ -4,8 +4,8 @@ import ReactMarkdown from 'react-markdown';
 import rehypeRaw from 'rehype-raw'
 import { Button } from "@chakra-ui/button";
 import AutoLink from './AutoLink';
-import { Text } from "@chakra-ui/layout";
-import { SimpleGrid } from '@chakra-ui/react';
+import { Text, Heading } from "@chakra-ui/layout";
+import { SimpleGrid, Accordion, AccordionItem, AccordionButton, Box, AccordionIcon, AccordionPanel } from '@chakra-ui/react';
 import { Tooltip } from "@chakra-ui/tooltip";
 
 const MDRenderer = (props) => {
@@ -18,6 +18,12 @@ const MDRenderer = (props) => {
             </Text>
             );
         },
+        /* Cannot pass props to staticimage like this, unfortunately...
+        img: props => {
+            return (
+                <StaticImage src={`${props.src}`} alt={`${props.alt}`} />
+            );
+        },*/
     }
 
     const customRender = {
@@ -47,6 +53,47 @@ const MDRenderer = (props) => {
             <Tooltip hasArrow placement={'top'} label={props.label}>
                 <Text as='span' color="info.500">{props.children}</Text>
             </Tooltip>),
+
+        ipaccordion: ({node, ...props}) => {
+            const { children, otherProps } = props;
+            const items = (children[0].split("\n"));
+            console.log(items);
+            return (
+            <Accordion pt={4} defaultIndex={[0]} allowToggle {...otherProps}>
+                { items.map((item) => {
+                    if (!item) return;
+                    let {title, text, id} = JSON.parse(item)
+                    return (
+                        <AccordionItem boxShadow={'md'} mb={3} borderRadius={5} bg={'white'} >
+                            <AccordionButton 
+                                _expanded={{ color: 'primary.500' }}
+                                fontFamily={"Poppins,sans-serif"}
+                                fontSize={'md'}
+                                ps={8}
+                                py={4}
+                            >
+                                <Box flex='1' textAlign='left'>
+                                    {title}
+                                </Box>
+                                <AccordionIcon />
+                            </AccordionButton>
+                            <AccordionPanel p={4}>
+                                <Text mb={4}>{text}</Text>
+                                <Text as='i'>Patent ID: {id}</Text>
+                            </AccordionPanel>
+                        </AccordionItem>
+                    )})}
+            </Accordion>);
+        },
+
+        accordionitem: ({node, ...props}) => (
+            <AccordionItem {...props} />),
+
+        accordionbutton: ({node, ...props}) => (
+            <asd {...props} />),
+
+
+
         
         ...ChakraUIRenderer(chakraOverrides)
     }

@@ -33,7 +33,7 @@ const WhitePaperCard = ({ title, subheading, icon, slug, py=6}) => {
 
         <Stack textAlign={'center'} h={{base: 400, sm: 380, md: 360, lg: 330}} bg={useColorModeValue('gray.50', 'gray.900')} px={6} py={10}>
 
-          <Icon as={FontAwesomeIcon} icon={icon.split(' ')} color={'primary.500'} h={100} w={100} pb={5} alignSelf={'center'} />
+          <Icon as={FontAwesomeIcon} icon={icon.split(' ')} color={'primary.500'} h={'75px'} w={'75px'} pb={5} alignSelf={'center'} />
           <Heading fontSize={'xl'} mb={2}>
             {title}
           </Heading>

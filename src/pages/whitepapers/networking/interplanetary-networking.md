@@ -106,4 +106,10 @@ sections:
         controls: false
         interactive: none
         lottie: https://assets9.lottiefiles.com/packages/lf20_tnk1qsyg.json
+relatedPapers:
+  - networking/the-whitestar-network
+  - security/intellectual-property
+  - security/system-surface-area
+  - security/cryptography
+  - security/security-architecture
 ---

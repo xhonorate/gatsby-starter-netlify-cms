@@ -36,5 +36,10 @@ sections:
       \
 
       Finally, WhiteStar tracks our competitors for the purpose of understanding the current state-of-the-art, evolving vulnerabilities, and to have a thorough understanding of the capabilities of both our peers and the “Black Hats” who seek to attack them.  We also maintain a hands-on testbed of competitive products and technologies in order to gain a more thorough understanding of other entities in this space.   By analyzing the information obtained, WhiteStar learns from the mistakes and successes of others, allowing us to more accurately address emerging threats in our products, and understand the ways in which the company or its products can be attacked.
-relatedPapers: []
+relatedPapers:
+  - networking/the-whitestar-network
+  - security/security-first
+  - security/supply-chain
+  - iot/business-of-iot
+  - networking/compliance-networking
 ---
