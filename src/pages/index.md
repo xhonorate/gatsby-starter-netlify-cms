@@ -101,7 +101,7 @@ sections:
       the standard for how to safeguard these rights.
 
 
-      To us, it’s not simply enough to say we respect your rights - we wanted to prove our conviction by creating a technology that will change the way internet communications will be delivered in the future. We have made our technology accessible through Star Fury Restful APIs so that every application developer can leverage our technology to provide you with the same protections we provide our customers. At WhitesStar, we believe our technology is revolutionary and it will transform the way society digitally communicates whether it be through secure and private conversations or through the use of connected IoT devices. WhiteStar is your trusted partner.
+      To us, it’s not simply enough to say we respect your rights - we wanted to prove our conviction by creating a technology that will change the way internet communications will be delivered in the future. We have made our technology accessible through StarFury Restful APIs so that every application developer can leverage our technology to provide you with the same protections we provide our customers. At WhiteStar, we believe our technology is revolutionary and it will transform the way society digitally communicates whether it be through secure and private conversations or through the use of connected IoT devices. WhiteStar is your trusted partner.
     graphic:
       - type: animation-object
         position: left
