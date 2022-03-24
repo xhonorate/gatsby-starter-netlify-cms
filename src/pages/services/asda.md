@@ -120,8 +120,9 @@ sections:
         autoplay: true
         loop: true
         controls: false
-        interactive: none
+        interactive: playOnScroll
         lottie: https://assets2.lottiefiles.com/packages/lf20_dpm3fjyp.json
+        frames: ""
   - align: start
     heading: Deploying FTL on Existing Networks
     content: >-

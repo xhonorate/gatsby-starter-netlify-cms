@@ -206,6 +206,7 @@ export class HomePageTemplate extends React.Component {
               controls
               interactive
               loop
+              frames
               image {
                 publicURL,
                 childImageSharp {

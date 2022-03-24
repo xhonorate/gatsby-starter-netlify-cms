@@ -54,7 +54,16 @@ Defaults:
               { label: Autoplay, name: autoplay, widget: boolean, default: true },
               { label: Loop, name: loop, widget: boolean, default: true },
               { label: Show Controls, name: controls, widget: boolean, default: false },
-              { label: Interactive, name: interactive, widget: select, <<: *lottieInteractive }
+              { label: Interactive, name: interactive, widget: select, <<: *lottieInteractive },
+              { 
+                label: Frames, 
+                name: frames, 
+                widget: string,
+                required: false,
+                pattern: ['/([0-9])+(-([0-9])+)?/', 'Only use numbers and -'],
+                default: '',
+                hint: "Set total number of frames (e.g 100) or range of frames to be played (e.g 50-100)"
+              }
             ]
           },
         ]
@@ -90,7 +99,7 @@ local_backend: true
 media_folder: /static/img
 public_folder: /img
 
-site_url: https://tender-kowalevski-4f537b.netlify.app/
+site_url: https://whitestar.netlify.app/
 publish_mode: editorial_workflow
 show_preview_links: true
 

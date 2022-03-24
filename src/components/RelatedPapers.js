@@ -14,8 +14,6 @@ import { Box, Heading, VStack, Text } from '@chakra-ui/react';
 export default function RelatedPapers({relatedPapers}) {
     const whitePaperData = useWhitePaperData();
 
-    console.log(relatedPapers);
-
     return (        
         <Box bg={'gray.100'} >
             <VStack spacing={2}>

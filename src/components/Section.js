@@ -5,7 +5,6 @@ import Lottie from './Lottie';
 import PreviewCompatibleImage from './PreviewCompatibleImage';
 import MDRenderer from './MDRenderer';
 import { Grid, GridItem, Center, Container, VStack, Heading, Box } from "@chakra-ui/react";
-import { StaticImage } from 'gatsby-plugin-image';
 
 const MagicGrid = (props) => {
     const {
@@ -53,7 +52,7 @@ const MagicGrid = (props) => {
 
     const headingItem = (
         <GridItem colSpan={((left || right) && !bottom) ? {base:12, md:7} : 12} colStart={left && !bottom ? {base:1, md:6} : 1} key="heading-item">
-            <VStack align={((left || right) && !bottom) ? "start" : "center"} pb={((left || right) && !bottom) ? 3 : 8} className={`text-${align} section-title`}>
+            <VStack align={((left || right) && !bottom) ? {base: "center", md: "start"} : "center"} pb={((left || right) && !bottom) ? 3 : 8} className={`text-${align} section-title`}>
                 <Heading as='h2'>{heading}</Heading>
                 {subheading && <p className="pb-4"><em>{subheading}</em></p>}
             </VStack>
@@ -68,7 +67,7 @@ const MagicGrid = (props) => {
                 rowStart={rowStart}
                 rowSpan={rowSpan}
                 colSpan={colSpan}>
-            <Center h='100%' p={3} mt={((left || right) && (!top && !bottom)) ? - 8 : 0} maxHeight={Math.min(460, paragraphHeights.reduce((a, b) => a + b, 0) - 28)}  >
+            <Center h='100%' p={3} mt={((left || right) && (!top && !bottom)) ? {base: 0, md: -8} : 0} maxHeight={Math.min(460, paragraphHeights.reduce((a, b) => a + b, 0) - 28)}  >
                 { graphic[0].type == "image-object" ?
                 <PreviewCompatibleImage imageInfo={{  
                     image: graphic[0].image,

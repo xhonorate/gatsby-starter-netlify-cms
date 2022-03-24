@@ -97,6 +97,7 @@ export const WhitePaperTemplate = (
                 controls
                 interactive
                 loop
+                frames
                 image {
                     publicURL,
                     childImageSharp {

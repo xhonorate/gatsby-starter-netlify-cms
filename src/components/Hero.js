@@ -21,7 +21,7 @@ export default function Hero(props) {
                         </div>
                     </MDBCol>
                     {lottie &&
-                        <MDBCol className="col-lg-6 d-lg-flex flex-lg-column align-items-stretch order-1 order-lg-2 hero-img">
+                        <MDBCol className="col-lg-6 d-lg-flex d-none d-md-flex flex-lg-column align-items-stretch order-1 order-lg-2 hero-img">
                             <Lottie src={lottie} />
                         </MDBCol>
                     }

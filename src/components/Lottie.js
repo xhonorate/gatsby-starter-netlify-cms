@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes, { arrayOf } from 'prop-types'
 import { Player } from "@lottiefiles/react-lottie-player";
 import { create } from '@lottiefiles/lottie-interactivity';
+import { Flex } from '@chakra-ui/react';
+import { Spinner } from '@chakra-ui/spinner';
 
 class Lottie extends React.Component {
   constructor(props) {
@@ -110,48 +112,49 @@ class Lottie extends React.Component {
     }
 
     if (this.props.frames && this.interactive && this.interactive.actions) {
-        this.interactive.actions[0].frames = (typeof(this.props.frames) == "number") ? [0, this.props.frames] : this.props.frames;
+        this.interactive.actions[0].frames = (this.props.frames.includes('-')) ? this.props.frames.split('-') : [0, parseInt(this.props.frames)];
     }
 
-    //strip the id from the file name if it is not given
-    this.id = this.props.id;
-    //if (this.interactive) { this.interactive.player = "#" + this.id };
-
-    this.state = { lottie: null };
+    this.state = { lottie: null, animationData: null };
     this.myRef = React.createRef(); // 1. create a reference for the lottie player
   }
 
   componentDidMount() {
-    // 3. listen for player load. see lottie player repo for other events
-   /* if (this.interactive) {
-        const interactive = this.interactive;
-        this.myRef.current.addEventListener('load', function (e) {
-            create(interactive);
-        });
-    }*/
+    this._asyncRequest = fetch(this.props.src)
+		.then(res => res.json())
+		.then(animationData => {
+			this._asyncRequest = null;
+			this.setState({animationData})})
+		.catch(err => console.warn(err));
+  }
+
+  componentWillUnmount() {
+    if (this._asyncRequest) {
+      this._asyncRequest.abort();
+    }
   }
 
   render() {
-    return (
-      <div className="lottie-anim">
-			<Player
-				ref={this.myRef}
-				id={this.id}
-				lottieRef={(instance) => {
-					this.setState({ lottie: instance }); // the lottie instance is returned in the argument of this prop. set it to your local state
-				}}
-				onEvent={(event) => {
-					if (this.interactive && event === "load") {
-						create({player: this.state.lottie, ...this.interactive});
-					}
-				}}
-				autoplay={this.props.autoplay ? true : null}
-				loop={this.props.loop ? true : null}
-				controls={this.props.controls ? true : null}
-				src={this.props.src}
-			></Player>
-      </div>
-    );
+	return (<Flex justify={'center'} align={'center'} m={'auto'} w={{base: 'xs', sm: 'sm', md: '360px', lg: '460px'}} h={{base: 'auto', md: '360px', lg: '460px'}}>
+		{ (this.state.animationData) && 
+		<Player
+			ref={this.myRef}
+			id={this.props.id}
+			lottieRef={(instance) => {
+				this.setState({ lottie: instance }); // the lottie instance is returned in the argument of this prop. set it to your local state
+			}}
+			onEvent={(event) => {
+				if (this.interactive && event === "load") {
+					create({player: this.state.lottie, ...this.interactive});
+				}
+			}}
+			autoplay={this.props.autoplay ? true : null}
+			loop={this.props.loop ? true : null}
+			controls={this.props.controls ? true : null}
+			src={this.state.animationData}
+		></Player> || 
+		<Spinner thickness={4} speed={'0.65s'} color={'secondary.500'} emptyColor={'gray.200'} size={'xl'} />} 
+	</Flex>);
   }
 }
 
@@ -162,7 +165,7 @@ Lottie.propTypes = {
     loop: PropTypes.bool,
     controls: PropTypes.bool,
     interactive: PropTypes.string,
-    frames: PropTypes.oneOfType([arrayOf(PropTypes.number), PropTypes.number]),
+    frames: PropTypes.string,
     mode: PropTypes.string,
     actions: PropTypes.arrayOf(PropTypes.object)
 }

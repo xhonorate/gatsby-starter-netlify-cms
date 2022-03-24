@@ -581,6 +581,7 @@ type MarkdownRemarkFrontmatterCategoriesGraphic {
   controls: Boolean
   interactive: String
   lottie: String
+  frames: String
 }
 
 type MarkdownRemarkFrontmatterCarousel @derivedTypes {
@@ -618,6 +619,7 @@ type MarkdownRemarkFrontmatterSectionsGraphic {
   loop: Boolean
   interactive: String
   lottie: String
+  frames: String
   controls: Boolean
 }
 
