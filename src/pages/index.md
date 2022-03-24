@@ -18,7 +18,7 @@ carousel:
       subheading: Communicate in SOCIETY Free Speech Communities and Privately in
         SOCIETY Secure Messenger.
       align: center
-    - align: left
+    - align: center
       heading: "**The Future of Network Technology**"
       image: /img/banner.png
       subheading: Some test
