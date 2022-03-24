@@ -46,7 +46,14 @@ module.exports = {
       },
     },
     `gatsby-plugin-image`,
-    "gatsby-plugin-web-font-loader",
+    {
+      resolve: 'gatsby-plugin-web-font-loader',
+      options: {
+        google: {
+          families: ['Open Sans', 'Raleway', 'Menlo', 'Poppins', 'Montserrat']
+        }
+      }
+    },
     "gatsby-plugin-sharp",
     "gatsby-plugin-fontawesome-css",
     "gatsby-transformer-sharp",
@@ -92,7 +99,6 @@ module.exports = {
         isUsingColorMode: true,
       },
     },
-    /*
     {
       resolve: "gatsby-plugin-purgecss", // purges all unused/unreferenced css rules
       options: {
