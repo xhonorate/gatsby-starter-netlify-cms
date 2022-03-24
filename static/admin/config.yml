@@ -259,6 +259,42 @@ collections:
           display_fields: ["title"]
         }
 
+  - name: "services"
+    label: "Services"
+    label_singular: "Service"
+    folder: "src/pages/services/"
+    media_folder: "/static/img"
+    public_folder: "/img"
+    create: true
+    fields:
+      - {
+          label: "Template Key",
+          name: "templateKey",
+          widget: "hidden",
+          default: "white-paper",
+        }
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Subheading", name: "subheading", widget: "string" }
+      - { 
+          label: "Categories",
+          name: "selectedCategories", 
+          widget: "hidden",
+          default: []
+        }
+      - { label: "Icon", name: "icon", widget: "hidden", default: "fas apple-whole" }
+      - { <<: *sections }
+      - { 
+          label: "Related Papers",
+          name: "relatedPapers", 
+          widget: "relation",
+          multiple: true,
+          required: false,
+          collection: "whitepapers",
+          value_field: "{{slug}}", 
+          search_fields: ["title"],
+          display_fields: ["title"]
+        }
+
   - name: "docs"
     label: "Docs"
     label_singular: "Doc"

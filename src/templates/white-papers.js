@@ -85,7 +85,7 @@ export const WhitePapersPageTemplate = ({
               </VStack>
               <SimpleGrid px={{base: 1, md: 4}} columns={{base: 1, md:2, lg: 3, xl: 4}} spacing={10}>
                 { whitePaperData && whitePaperData.length > 0 && whitePaperData.map((whitePaper) => {
-                    if (selectedCategory === 'All' || whitePaper.node.frontmatter.selectedCategories.includes(selectedCategory)) {
+                    if ((selectedCategory === 'All' && whitePaper.node.frontmatter.selectedCategories.length > 0) || whitePaper.node.frontmatter.selectedCategories.includes(selectedCategory)) {
                       return (<WhitePaperCard key={whitePaper.node.fields.slug} slug={whitePaper.node.fields.slug} {...whitePaper.node.frontmatter} />)
                     } else {
                       return null;

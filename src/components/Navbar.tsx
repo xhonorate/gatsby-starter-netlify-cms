@@ -66,6 +66,7 @@ export default function Navbar() {
         const { products } = data.productsQuery.frontmatter;
         const whitePapers = data.whitePapersQuery.edges;
         let categories = [];
+        let services = [];
 
         whitePapers.forEach(whitePaper => {
           let selectedCategories = whitePaper.node.frontmatter.selectedCategories;
@@ -87,6 +88,11 @@ export default function Navbar() {
               label: whitePaper.node.frontmatter.title,
               href: whitePaper.node.fields.slug,
             })
+          } else if (selectedCategories) {
+            services.push({
+              label: whitePaper.node.frontmatter.title,
+              href: whitePaper.node.fields.slug,
+            })
           }
         });
 
@@ -100,12 +106,16 @@ export default function Navbar() {
             children: products.map((product: any, index: number) => ({ key: product.heading, label: product.heading, href: `/#product-${index}`})),
           },
           {
+            label: 'Services',
+            children: services,
+          },
+          {
             label: 'White Papers',
             href: '/whitepapers',
             children: categories,
           },
           {
-            label: 'About WhiteStar',
+            label: 'About Us',
             href: '#about',
             children: [
               {

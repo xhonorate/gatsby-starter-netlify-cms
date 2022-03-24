@@ -52,8 +52,8 @@ const MagicGrid = (props) => {
     }
 
     const headingItem = (
-        <GridItem colSpan={left || right ? {base:12, md:7} : 12} colStart={left ? {base:1, md:6} : 1} key="heading-item">
-            <VStack align={left || right ? "start" : "center"} pb={left || right ? 3 : 8} className={`text-${align} section-title`}>
+        <GridItem colSpan={((left || right) && !bottom) ? {base:12, md:7} : 12} colStart={left && !bottom ? {base:1, md:6} : 1} key="heading-item">
+            <VStack align={((left || right) && !bottom) ? "start" : "center"} pb={((left || right) && !bottom) ? 3 : 8} className={`text-${align} section-title`}>
                 <Heading as='h2'>{heading}</Heading>
                 {subheading && <p className="pb-4"><em>{subheading}</em></p>}
             </VStack>
@@ -68,7 +68,7 @@ const MagicGrid = (props) => {
                 rowStart={rowStart}
                 rowSpan={rowSpan}
                 colSpan={colSpan}>
-            <Center h='100%' p={3} mt={((left || right) && (!top && !bottom)) ? - 8 : 0}>
+            <Center h='100%' p={3} mt={((left || right) && (!top && !bottom)) ? - 8 : 0} maxHeight={Math.min(460, paragraphHeights.reduce((a, b) => a + b, 0) - 28)}  >
                 { graphic[0].type == "image-object" ?
                 <PreviewCompatibleImage imageInfo={{  
                     image: graphic[0].image,
