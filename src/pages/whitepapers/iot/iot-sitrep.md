@@ -54,8 +54,9 @@ sections:
         autoplay: true
         loop: true
         controls: false
-        interactive: none
+        interactive: playOnScroll
         lottie: https://assets9.lottiefiles.com/packages/lf20_0nm9lh7o.json
+        frames: "586"
   - align: start
     heading: Our Vision at WhiteStar
     content: >-

@@ -61,6 +61,7 @@ sections:
         controls: false
         interactive: syncWithScroll
         lottie: https://assets9.lottiefiles.com/packages/lf20_6ululmvu.json
+        frames: "897"
   - align: start
     heading: Existing Solutions
     content: >-
@@ -104,8 +105,9 @@ sections:
         autoplay: true
         loop: true
         controls: false
-        interactive: none
+        interactive: playOnScroll
         lottie: https://assets9.lottiefiles.com/packages/lf20_tnk1qsyg.json
+        frames: "360"
 relatedPapers:
   - networking/the-whitestar-network
   - security/intellectual-property

@@ -112,8 +112,10 @@ class Lottie extends React.Component {
     }
 
     if (this.props.frames && this.interactive && this.interactive.actions) {
-        this.interactive.actions[0].frames = (this.props.frames.includes('-')) ? this.props.frames.split('-') : [0, parseInt(this.props.frames)];
-    }
+	console.log(this.interactive.actions)
+		this.interactive.actions[0].frames = (this.props.frames.includes('-')) ? this.props.frames.split('-').map(e => parseInt(e)) : [0, parseInt(this.props.frames)];
+    console.log(this.interactive.actions)
+	}
 
     this.state = { lottie: null, animationData: null };
     this.myRef = React.createRef(); // 1. create a reference for the lottie player

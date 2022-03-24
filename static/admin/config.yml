@@ -60,7 +60,7 @@ Defaults:
                 name: frames, 
                 widget: string,
                 required: false,
-                pattern: ['/([0-9])+(-([0-9])+)?/', 'Only use numbers and -'],
+                pattern: ['([0-9])+(-([0-9])+)?', 'Only use numbers and -'],
                 default: '',
                 hint: "Set total number of frames (e.g 100) or range of frames to be played (e.g 50-100)"
               }

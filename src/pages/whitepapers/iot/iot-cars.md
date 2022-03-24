@@ -32,8 +32,9 @@ sections:
         autoplay: true
         loop: true
         controls: false
-        interactive: none
+        interactive: syncWithScroll
         lottie: https://assets9.lottiefiles.com/packages/lf20_yvrh9cry.json
+        frames: 0-613
   - align: start
     heading: The WhiteStar Solution
     content: >-

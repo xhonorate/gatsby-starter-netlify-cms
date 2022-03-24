@@ -34,6 +34,8 @@ function encode(data) {
 export default class ContactForm extends React.Component {
   constructor (props) {
       super(props);
+
+      this.onSubmit = props.onSubmit;
   }
 
   handleChange = (e) => {
@@ -51,7 +53,7 @@ export default class ContactForm extends React.Component {
         ...this.state,
       }),
     })
-      .then(() => navigate("#"))
+      .then(() => this.onSubmit())
       .catch((error) => alert(error));
   };
 
@@ -143,8 +145,9 @@ export default class ContactForm extends React.Component {
               <WrapItem justifyContent={'center'} w={{base:'400px', md:'360px'}}>
                 <Box align={'end'} bg="white" borderRadius="lg">
                   <Box m={8} color="#0B0E3F">
-                  <form name="contactForm" method="post" data-netlify="true" onSubmit={this.handleSubmit}>
+                  <form name="contactForm" method="post" data-netlify="true" data-netlify-recaptcha="true" data-netlify-honeypot="bot-field" onSubmit={this.handleSubmit}>
                   <input type="hidden" name="form-name" value="contactForm"/>
+                  <input type="hidden" name="bot-field" />
                     <VStack spacing={5}>
                       <FormControl id="name">
                         <FormLabel>Your Name</FormLabel>
@@ -179,6 +182,7 @@ export default class ContactForm extends React.Component {
                           placeholder="message"
                         />
                       </FormControl>
+                      <div data-netlify-recaptcha="true"></div>
                       <FormControl id="name">
                         <Button
                           type="submit"

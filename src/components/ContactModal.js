@@ -54,7 +54,7 @@ export default class ContactModal extends React.Component {
                 borderRadius="lg">
                 <ModalCloseButton mt={{base: 10, sm: 2}} />
                 <ModalBody>
-                    <ContactForm />
+                    <ContactForm onSubmit={this.toggleShow} />
                 </ModalBody>
             </ModalContent>
         </Modal>

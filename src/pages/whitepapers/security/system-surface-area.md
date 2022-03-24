@@ -34,6 +34,7 @@ sections:
         controls: false
         interactive: none
         lottie: https://assets8.lottiefiles.com/packages/lf20_mlbqveuq.json
+        frames: "364"
   - align: start
     heading: Existing Solutions
     content: >-
@@ -49,7 +50,7 @@ sections:
       - type: animation-object
         position: right
         autoplay: true
-        loop: false
+        loop: true
         controls: false
         interactive: none
         lottie: https://assets6.lottiefiles.com/temp/lf20_iRxzMr.json
@@ -68,10 +69,11 @@ sections:
       - type: animation-object
         position: left
         autoplay: true
-        loop: false
+        loop: true
         controls: false
-        interactive: none
+        interactive: playOnScroll
         lottie: https://assets8.lottiefiles.com/packages/lf20_dpm3fjyp.json
+        frames: 445-840
 relatedPapers:
   - education/society-in-the-classroom
   - networking/the-whitestar-network

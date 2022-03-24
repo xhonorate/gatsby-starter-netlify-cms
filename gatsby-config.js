@@ -98,7 +98,7 @@ module.exports = {
         resetCSS: false,
         isUsingColorMode: true,
       },
-    },
+    },/*
     {
       resolve: "gatsby-plugin-purgecss", // purges all unused/unreferenced css rules
       options: {
