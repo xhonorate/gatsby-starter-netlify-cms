@@ -14,11 +14,6 @@ import {
   InputGroup,
   InputLeftElement,
   Textarea,
-  Modal,
-  ModalOverlay,
-  ModalContent,
-  ModalCloseButton,
-  ModalBody,
 } from '@chakra-ui/react';
 import {
   MdPhone,
@@ -39,11 +34,6 @@ function encode(data) {
 export default class ContactForm extends React.Component {
   constructor (props) {
       super(props);
-      this.state = {
-          open: false
-      }
-
-    this.onStateChange = props.onStateChange;
   }
 
   handleChange = (e) => {
@@ -65,44 +55,10 @@ export default class ContactForm extends React.Component {
       .catch((error) => alert(error));
   };
 
-  toggleShow = () => {
-      this.setState({
-          open: !this.state.open
-      })
-  }
-
-  componentDidMount() {
-      this.toggleShow = this.toggleShow.bind(this);
-
-      let isBrowser = () => typeof window !== "undefined";
-      if (isBrowser && window.location.hash == "#contactForm" && !this.state.open) {
-          this.setState({open: true});
-      }
-  }
-
-  componentWillReceiveProps(props) {
-      this.setState({ open: props.open })
-  }
-
   render() {
       return (
         <>
-          <Modal
-            size={'xl'}
-            isCentered
-            onClose={this.toggleShow}
-            isOpen={this.state.open}
-            motionPreset='slideInBottom'
-          >
-            <ModalOverlay />
-            <ModalContent
-              maxW={{base: '450px', md: 'container.md'}}
-              bg="#02054B"
-              color="white"
-              borderRadius="lg">
-              <ModalCloseButton mt={{base: 10, sm: 2}} />
-              <ModalBody>
-                  <Wrap align={'center'} justify={{base: 'center', md: 'space-between'}} spacing={{ base: 6, sm: 10, md: 18 }}>
+            <Wrap align={'center'} justify={{base: 'center', md: 'space-between'}} spacing={{ base: 6, sm: 10, md: 18 }}>
               <WrapItem align={'center'}>
                 <Box>
                 <Heading>Contact WhiteStar</Heading>
@@ -188,7 +144,7 @@ export default class ContactForm extends React.Component {
                 <Box align={'end'} bg="white" borderRadius="lg">
                   <Box m={8} color="#0B0E3F">
                   <form name="contactForm" method="post" data-netlify="true" onSubmit={this.handleSubmit}>
-                  <input type="hidden" name="form-name" value="contactForm" data-netlify-recaptcha="true"/>
+                  <input type="hidden" name="form-name" value="contactForm"/>
                     <VStack spacing={5}>
                       <FormControl id="name">
                         <FormLabel>Your Name</FormLabel>
@@ -239,9 +195,6 @@ export default class ContactForm extends React.Component {
                 </Box>
               </WrapItem>
             </Wrap>
-              </ModalBody>
-            </ModalContent>
-          </Modal>
         </>
       )
     }

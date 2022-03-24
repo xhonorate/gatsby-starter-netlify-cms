@@ -26,13 +26,13 @@ import {
   ChevronDownIcon,
   ChevronRightIcon,
 } from '@chakra-ui/icons';
-import ContactForm from "./ContactForm";
+import ContactModal from "./ContactModal";
 
 export default function Navbar() {
   const { isOpen, onToggle } = useDisclosure();
   const [ contactOpen, setContactOpen ] = useState(false);
 
-  const openContactForm = () => setContactOpen(true);
+  const openContactModal = () => setContactOpen(true);
 
   return (
     <StaticQuery
@@ -130,13 +130,13 @@ export default function Navbar() {
           },
           {
             label: 'Contact Us',
-            onclick: openContactForm,
+            onclick: openContactModal,
           },
         ];
 
         return(
         <Box>
-          <ContactForm open={contactOpen} />
+          <ContactModal open={contactOpen} />
           <Flex
             bg={useColorModeValue('white', 'gray.800')}
             color={useColorModeValue('gray.600', 'white')}
